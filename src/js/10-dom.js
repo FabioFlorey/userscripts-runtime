@@ -133,8 +133,32 @@
       );
 
     svg.setAttribute(
+      'class',
+      [
+        'us-icon',
+        options.className || ''
+      ].filter(Boolean).join(' ')
+    );
+
+    svg.setAttribute(
       'viewBox',
       options.viewBox || '0 0 24 24'
+    );
+
+    svg.setAttribute(
+      'width',
+      String(
+        options.width ||
+        24
+      )
+    );
+
+    svg.setAttribute(
+      'height',
+      String(
+        options.height ||
+        24
+      )
     );
 
     svg.setAttribute(
@@ -145,6 +169,14 @@
     svg.setAttribute(
       'stroke',
       options.stroke || 'currentColor'
+    );
+
+    svg.setAttribute(
+      'stroke-width',
+      String(
+        options.strokeWidth ||
+        2
+      )
     );
 
     svg.setAttribute(
