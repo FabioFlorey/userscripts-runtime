@@ -7362,6 +7362,31 @@ button.us-pill {
 
 }
 
+[data-userscript-root] .us-floating-window-actions .us-action-button,
+[data-userscript-root] .us-floating-window-actions .us-icon-button-xs {
+
+  width: var(--us-control-height-xs);
+  min-width: var(--us-control-height-xs);
+  max-width: var(--us-control-height-xs);
+
+  height: var(--us-control-height-xs);
+  min-height: var(--us-control-height-xs);
+  max-height: var(--us-control-height-xs);
+
+  flex-basis: var(--us-control-height-xs);
+
+}
+
+[data-userscript-root] .us-floating-window-actions .us-icon {
+
+  width: 15px;
+  min-width: 15px;
+  height: 15px;
+
+  flex-basis: 15px;
+
+}
+
 [data-userscript-root] .us-floating-window-body {
 
   display: flex;
@@ -7573,7 +7598,7 @@ button.us-pill {
 
   width:
     min(
-      660px,
+      460px,
       calc(100vw - 16px)
     );
 
@@ -7613,8 +7638,8 @@ button.us-pill {
 
   grid-template-columns:
     repeat(
-      auto-fit,
-      minmax(74px, 1fr)
+      5,
+      minmax(0, 1fr)
     );
 
   gap: 2px;
@@ -7628,18 +7653,18 @@ button.us-pill {
   display: grid;
 
   grid-template-rows:
-    22px
-    minmax(1.4em, auto);
+    18px
+    minmax(1.25em, auto);
 
   place-items: center;
 
-  gap: 5px;
+  gap: 3px;
 
   min-width: 0;
-  min-height: 62px;
+  min-height: 50px;
   padding:
-    var(--us-space-2)
-    var(--us-space-1);
+    var(--us-space-1)
+    4px;
 
   border:
     1px solid
@@ -7680,8 +7705,8 @@ button.us-pill {
 
 [data-userscript-root] .us-selection-tool > svg {
 
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
 
 }
 
@@ -7713,8 +7738,8 @@ button.us-pill {
 [data-userscript-root] .us-selection-color {
 
   grid-template-rows:
-    22px
-    minmax(1.4em, auto);
+    18px
+    minmax(1.25em, auto);
 
 }
 
@@ -7722,8 +7747,8 @@ button.us-pill {
 
   display: block;
 
-  width: 22px;
-  height: 22px;
+  width: 18px;
+  height: 18px;
 
   border:
     1px solid
@@ -7789,7 +7814,7 @@ button.us-pill {
 
 }
 
-@container (max-width: 500px) {
+@container (max-width: 400px) {
 
   [data-userscript-root] .us-selection-tools {
 
@@ -7856,8 +7881,8 @@ button.us-pill {
 
   min-height: var(--us-chrome-height);
   padding:
-    var(--us-space-2)
-    var(--us-space-4);
+    var(--us-space-1)
+    var(--us-space-3);
 
   border-color: var(--us-border-strong);
 

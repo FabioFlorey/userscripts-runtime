@@ -818,29 +818,108 @@
           )
         );
 
-      let top =
-        rect.top -
-        shellRect.height -
-        gap;
-
-      if (top < padding) {
-
-        top =
-          rect.bottom +
-          gap;
-
-      }
-
-      top =
+      const maxTop =
         Math.max(
           padding,
-          Math.min(
-            global.innerHeight -
-              shellRect.height -
-              padding,
-            top
-          )
+          global.innerHeight -
+            shellRect.height -
+            padding
         );
+
+      const clampTop =
+        (value) =>
+          Math.max(
+            padding,
+            Math.min(
+              maxTop,
+              value
+            )
+          );
+
+      const aboveTop =
+        clampTop(
+          rect.top -
+            shellRect.height -
+            gap
+        );
+
+      const belowTop =
+        clampTop(
+          rect.bottom +
+            gap
+        );
+
+      const obstacles =
+        Array.from(
+          overlayRoot.querySelectorAll(
+            '.us-floating-window, .us-annotation-mode-bar'
+          )
+        ).filter(
+          (node) =>
+            !node.hidden &&
+            node !== shell
+        );
+
+      const collides =
+        (candidateTop) =>
+          obstacles.some(
+            (node) => {
+
+              const obstacle =
+                node.getBoundingClientRect();
+
+              return !(
+                left +
+                  shellRect.width <=
+                    obstacle.left ||
+                left >=
+                  obstacle.right ||
+                candidateTop +
+                  shellRect.height <=
+                    obstacle.top ||
+                candidateTop >=
+                  obstacle.bottom
+              );
+
+            }
+          );
+
+      const aboveFits =
+        rect.top -
+          shellRect.height -
+          gap >=
+            padding;
+
+      const belowFits =
+        rect.bottom +
+          gap +
+          shellRect.height <=
+            global.innerHeight -
+              padding;
+
+      let top =
+        aboveTop;
+
+      if (
+        !aboveFits ||
+        collides(
+          aboveTop
+        )
+      ) {
+
+        if (
+          belowFits ||
+          !collides(
+            belowTop
+          )
+        ) {
+
+          top =
+            belowTop;
+
+        }
+
+      }
 
       shell.style.left =
         `${left}px`;

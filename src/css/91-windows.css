@@ -132,6 +132,31 @@
 
 }
 
+[data-userscript-root] .us-floating-window-actions .us-action-button,
+[data-userscript-root] .us-floating-window-actions .us-icon-button-xs {
+
+  width: var(--us-control-height-xs);
+  min-width: var(--us-control-height-xs);
+  max-width: var(--us-control-height-xs);
+
+  height: var(--us-control-height-xs);
+  min-height: var(--us-control-height-xs);
+  max-height: var(--us-control-height-xs);
+
+  flex-basis: var(--us-control-height-xs);
+
+}
+
+[data-userscript-root] .us-floating-window-actions .us-icon {
+
+  width: 15px;
+  min-width: 15px;
+  height: 15px;
+
+  flex-basis: 15px;
+
+}
+
 [data-userscript-root] .us-floating-window-body {
 
   display: flex;
