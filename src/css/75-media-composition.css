@@ -1,0 +1,151 @@
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ MEDIA CONTROL ADAPTATION                                                     │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+/*
+ * Media controls must adapt to their own containing width, not merely the
+ * viewport. A flex-wrapping layout therefore replaces the older fixed grid.
+ */
+
+
+
+[data-userscript-root] .us-media-controls > .us-media-progress {
+  flex: 1
+    1
+    96px;
+  min-width: 60px;
+  flex-basis: 120px;
+  height: 8px;
+
+}
+
+[data-userscript-root] .us-media-controls > .us-media-time {
+
+  flex:
+    0
+    0
+    auto;
+
+}
+
+[data-userscript-root] .us-media-controls > .us-select {
+  flex: 0
+    1
+    86px;
+  width: auto;
+  min-width: 73px;
+  max-width: 120px;
+  flex-basis: 108px;
+
+}
+
+
+
+/*
+ * If wrapping leaves the secondary action group on its own row, keep it aligned
+ * to the end rather than stretching icon buttons or inserting arbitrary gaps.
+ */
+
+
+
+/*
+ * Tiny host containers should shrink flexible pieces before any square action
+ * button. The progress bar may collapse to a short indicator but never forces
+ * horizontal overflow.
+ */
+
+
+
+[data-userscript-root] .us-media-time,
+[data-userscript-root] .us-media-controls .us-select {
+
+  max-width: 100%;
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ COMPOSITION SPACING                                                         │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+/*
+ * Meta lines need different rhythm when they are card-internal versus when
+ * they summarize a whole component group. This prevents compact metadata from
+ * visually welding itself to the surface above it.
+ */
+
+
+
+[data-userscript-root] .us-grid + .us-meta-line,
+[data-userscript-root] .us-offset-card + .us-meta-line,
+[data-userscript-root] .us-panel + .us-meta-line,
+[data-userscript-root] .us-chrome-strip + .us-meta-line {
+
+  margin-top: var(--us-space-4);
+
+}
+
+[data-userscript-root] .us-offset-card .us-meta-line {
+
+  margin-top: var(--us-space-1);
+
+}
+
+[data-userscript-root] .us-chrome-strip + .us-grid,
+[data-userscript-root] .us-chrome-strip + .us-offset-card,
+[data-userscript-root] .us-meta-line + .us-grid,
+[data-userscript-root] .us-meta-line + .us-offset-card {
+
+  margin-top: var(--us-space-4);
+
+}
+
+/*
+ * Wrapped metadata should keep a readable row gap instead of collapsing into
+ * one visually continuous line when the container gets narrow.
+ */
+
+
+
+[data-userscript-root] .us-meta-line > * {
+
+  min-width: 0;
+
+}
+
+@media (max-width: 430px) {
+
+  [data-userscript-root] .us-grid + .us-meta-line,
+  [data-userscript-root] .us-offset-card + .us-meta-line,
+  [data-userscript-root] .us-panel + .us-meta-line,
+  [data-userscript-root] .us-chrome-strip + .us-meta-line {
+
+    margin-top: var(--us-space-3);
+
+  }
+
+}
+
+/* Component-width adaptation: narrow drawers can exist on wide desktop pages. */
+@container (max-width: 340px) {
+  [data-userscript-root] .us-media-controls-actions {
+    flex: 1 1 100%;
+    margin-left: 0;
+    justify-content: flex-end;
+  }
+}
+
+@container (max-width: 240px) {
+  [data-userscript-root] .us-media-controls > .us-select {
+    flex: 1 1 100%;
+    max-width: none;
+  }
+
+  [data-userscript-root] .us-media-controls > .us-media-progress {
+    flex-basis: 100%;
+  }
+}

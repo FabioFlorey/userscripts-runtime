@@ -1,0 +1,103 @@
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ DARK THEME — FABIOFLOREY VISUAL SYSTEM                                       │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root][data-us-theme="dark"] {
+
+  --us-canvas: #111111;
+  --us-shell: #111111;
+  --us-surface-1: #111111;
+  --us-surface-2: #161616;
+  --us-surface-3: #1c1c1c;
+  --us-surface-hover: #191919;
+  --us-surface-active: #202020;
+  --us-surface-selected: #21151b;
+
+  --us-fg: #f5f5f5;
+  --us-fg-secondary: #d0d0d0;
+  --us-fg-muted: #999999;
+  --us-fg-disabled: #666666;
+  --us-fg-inverse: #111111;
+
+  --us-border-subtle: #222222;
+  --us-border: #2a2a2a;
+  --us-border-strong: #444444;
+
+  --us-accent: #ff5ca8;
+  --us-accent-hover: #ff79b7;
+  --us-accent-active: #e94f99;
+
+  --us-accent-bg: #24151c;
+  --us-accent-bg-hover: #301922;
+  --us-accent-border: #7b3455;
+
+  --us-trace-fg: #999999;
+  --us-trace-bg: #151515;
+  --us-trace-border: #333333;
+
+  --us-debug-fg: #cab6e8;
+  --us-debug-bg: #1d1723;
+  --us-debug-border: #5b496b;
+
+  --us-info-fg: #91c8f0;
+  --us-info-bg: #121d25;
+  --us-info-border: #3f6d8d;
+
+  --us-success-fg: #8fdaa8;
+  --us-success-bg: #122019;
+  --us-success-border: #47795a;
+
+  --us-warning-fg: #e4bd78;
+  --us-warning-bg: #241d12;
+  --us-warning-border: #7b6134;
+
+  --us-danger-fg: #ef8d94;
+  --us-danger-bg: #2b1719;
+  --us-danger-border: #86454a;
+
+  --us-critical-fg: #ffabb1;
+  --us-critical-bg: #351619;
+  --us-critical-border: #ac5158;
+
+  --us-shadow-popover:
+    3px 3px 0 #000000;
+
+  --us-shadow-dialog:
+    5px 5px 0 #000000;
+
+  color-scheme: dark;
+
+}
+
+[data-userscript-root][data-us-theme="dark"][data-us-contrast="high"] {
+
+  --us-fg: #ffffff;
+  --us-fg-secondary: #eeeeee;
+  --us-fg-muted: #bdbdbd;
+  --us-fg-disabled: #858585;
+
+  --us-border-subtle: #333333;
+  --us-border: #555555;
+  --us-border-strong: #808080;
+
+  --us-accent: #ff74b5;
+  --us-accent-border: #a84a75;
+
+}
+
+@media (prefers-contrast: more) {
+
+  [data-userscript-root][data-us-theme="dark"] {
+
+    --us-fg: #ffffff;
+    --us-fg-secondary: #eeeeee;
+    --us-fg-muted: #bdbdbd;
+
+    --us-border: #555555;
+    --us-border-strong: #808080;
+
+  }
+
+}

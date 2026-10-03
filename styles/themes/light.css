@@ -1,0 +1,101 @@
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ LIGHT THEME — FABIOFLOREY VISUAL SYSTEM                                      │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root][data-us-theme="light"] {
+
+  --us-canvas: #f5f5f5;
+  --us-shell: #f5f5f5;
+  --us-surface-1: #f5f5f5;
+  --us-surface-2: #eeeeee;
+  --us-surface-3: #e7e7e7;
+  --us-surface-hover: #ebebeb;
+  --us-surface-active: #e2e2e2;
+  --us-surface-selected: #eaf2fb;
+
+  --us-fg: #2d2224;
+  --us-fg-secondary: #54494b;
+  --us-fg-muted: #888888;
+  --us-fg-disabled: #aaaaaa;
+  --us-fg-inverse: #f5f5f5;
+
+  --us-border-subtle: #e8e8e8;
+  --us-border: #dddddd;
+  --us-border-strong: #bdbdbd;
+
+  --us-accent: #0a67c3;
+  --us-accent-hover: #0757a6;
+  --us-accent-active: #06498c;
+
+  --us-accent-bg: #e7f0f9;
+  --us-accent-bg-hover: #dae9f7;
+  --us-accent-border: #7ba9d5;
+
+  --us-trace-fg: #737373;
+  --us-trace-bg: #efefef;
+  --us-trace-border: #c8c8c8;
+
+  --us-debug-fg: #654b8a;
+  --us-debug-bg: #f0ebf5;
+  --us-debug-border: #b9a8d0;
+
+  --us-info-fg: #205f8e;
+  --us-info-bg: #e8f2f9;
+  --us-info-border: #8fb8d4;
+
+  --us-success-fg: #1f6a3d;
+  --us-success-bg: #e8f5ed;
+  --us-success-border: #82b99a;
+
+  --us-warning-fg: #7b541a;
+  --us-warning-bg: #faf1df;
+  --us-warning-border: #c9a868;
+
+  --us-danger-fg: #97363d;
+  --us-danger-bg: #faeaea;
+  --us-danger-border: #cd969a;
+
+  --us-critical-fg: #7e1f27;
+  --us-critical-bg: #f8dddd;
+  --us-critical-border: #bd7379;
+
+  --us-shadow-popover:
+    3px 3px 0 #d1d1d1;
+
+  --us-shadow-dialog:
+    5px 5px 0 #c4c4c4;
+
+  color-scheme: light;
+
+}
+
+[data-userscript-root][data-us-theme="light"][data-us-contrast="high"] {
+
+  --us-fg: #160f11;
+  --us-fg-secondary: #33292b;
+  --us-fg-muted: #5f5f5f;
+
+  --us-border: #aaaaaa;
+  --us-border-strong: #777777;
+
+  --us-accent: #0054a8;
+  --us-accent-border: #5f93c6;
+
+}
+
+@media (prefers-contrast: more) {
+
+  [data-userscript-root][data-us-theme="light"] {
+
+    --us-fg: #160f11;
+    --us-fg-secondary: #33292b;
+    --us-fg-muted: #5f5f5f;
+
+    --us-border: #aaaaaa;
+    --us-border-strong: #777777;
+
+  }
+
+}

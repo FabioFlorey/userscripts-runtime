@@ -1,0 +1,4 @@
+/* Optional web fonts for the userscript runtime.
+ * base.css does not depend on this file; system fallbacks remain usable.
+ */
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Pixelify+Sans:wght@400;500;600;700&family=Press+Start+2P&display=swap");

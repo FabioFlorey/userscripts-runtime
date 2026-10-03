@@ -1,0 +1,545 @@
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ PAGE OVERLAYS                                                                │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+/*
+ * Most userscripts augment an existing site rather than replacing it.
+ *
+ * An overlay root occupies the viewport but ignores pointer input itself.
+ * Interactive children opt back into pointer events. This makes it safe to host
+ * launchers, anchored toolbars, popovers, drawers, modals and toast stacks over
+ * arbitrary pages without blocking the page underneath.
+ */
+
+[data-userscript-root].us-fixed-root,
+[data-userscript-root].us-overlay-root {
+
+  position: fixed;
+  inset: 0;
+
+  z-index: var(--us-z-overlay);
+
+  pointer-events: none;
+
+}
+
+[data-userscript-root].us-overlay-root > *,
+[data-userscript-root].us-fixed-root > * {
+
+  pointer-events: auto;
+
+}
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ FLOATING ACTION                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-floating-action {
+  position: fixed;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--us-space-2);
+  width: var(--us-floating-size);
+  min-width: var(--us-floating-size);
+  max-width: var(--us-floating-size);
+  height: var(--us-floating-size);
+  min-height: var(--us-floating-size);
+  max-height: var(--us-floating-size);
+  padding: 0;
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--us-accent-border);
+  border-radius: 0;
+  background: var(--us-shell);
+  color: var(--us-fg);
+  box-shadow: 3px
+    3px
+    0
+    var(--us-border);
+  cursor: pointer;
+  user-select: none;
+  border-color: var(--us-border);
+
+}
+
+[data-userscript-root] .us-floating-action-labeled {
+
+  width: auto;
+  min-width: 40px;
+  max-width: none;
+
+  padding:
+    0
+    11px;
+
+  aspect-ratio: auto;
+
+}
+
+[data-userscript-root] .us-floating-action:hover {
+  border-color: var(--us-accent);
+  background: var(--us-accent-bg);
+  color: var(--us-accent);
+  box-shadow: 4px
+    4px
+    0
+    var(--us-accent);
+  transform: translate(
+      -1px,
+      -1px
+    );
+
+}
+
+[data-userscript-root] .us-floating-action svg {
+  width: 20px;
+  height: 20px;
+
+}
+
+[data-userscript-root] .us-floating-action-bottom-right {
+
+  right: 18px;
+  bottom: 18px;
+
+}
+
+[data-userscript-root] .us-floating-action-bottom-left {
+
+  bottom: 18px;
+  left: 18px;
+
+}
+
+[data-userscript-root] .us-floating-action-top-right {
+
+  top: 18px;
+  right: 18px;
+
+}
+
+[data-userscript-root] .us-floating-action-top-left {
+
+  top: 18px;
+  left: 18px;
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ HOVER / ANCHORED TOOLBAR                                                     │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-hover-toolbar {
+
+  position: fixed;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+
+  padding: 3px;
+
+  border: 1px solid var(--us-border);
+  border-radius: var(--us-radius-sm);
+
+  background: var(--us-surface-1);
+  color: var(--us-fg);
+
+  box-shadow: var(--us-shadow-popover);
+
+}
+
+[data-userscript-root] .us-hover-toolbar-label {
+
+  padding:
+    0
+    6px;
+
+  color: var(--us-fg-muted);
+
+  font-size: var(--us-font-size-xs);
+
+  white-space: nowrap;
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ POPOVER                                                                      │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-popover {
+  position: fixed;
+  width: min(360px, calc(100vw - 24px));
+  max-height: min(520px, calc(100vh - 24px));
+  overflow: auto;
+  border: 1px solid var(--us-border-strong);
+  border-radius: var(--us-radius-md);
+  background: var(--us-surface-1);
+  color: var(--us-fg);
+  box-shadow: var(--us-shadow-popover);
+  padding: var(--us-space-4);
+
+}
+
+[data-userscript-root] .us-popover-header {
+
+  display: flex;
+  align-items: center;
+  gap: var(--us-space-3);
+  min-height: var(--us-chrome-height);
+  padding:
+    var(--us-space-2)
+    var(--us-space-3);
+
+  border-bottom: 1px solid var(--us-border-subtle);
+
+  background: var(--us-surface-2);
+
+}
+
+[data-userscript-root] .us-popover-title {
+
+  flex: 1 1 auto;
+
+  min-width: 0;
+  overflow: hidden;
+
+  color: var(--us-fg);
+
+  font-size: var(--us-font-size-sm);
+  font-weight: 600;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}
+
+[data-userscript-root] .us-popover-body {
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--us-space-3);
+
+  padding: var(--us-space-3);
+
+}
+
+[data-userscript-root] .us-popover-footer {
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--us-space-2);
+
+  padding:
+    var(--us-space-2)
+    var(--us-space-3);
+
+  border-top: 1px solid var(--us-border-subtle);
+
+  background: var(--us-surface-2);
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ DRAWER                                                                       │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  width: var(--us-drawer-width);
+  border-color: var(--us-border-strong);
+  background: var(--us-shell);
+  color: var(--us-fg);
+  box-shadow: none;
+  max-width: calc(100vw - 16px);
+  border-radius: 0;
+
+}
+
+[data-userscript-root] .us-drawer-right {
+
+  right: 0;
+
+  border-left:
+    1px solid
+    var(--us-border-strong);
+
+}
+
+[data-userscript-root] .us-drawer-left {
+
+  left: 0;
+
+  border-right:
+    1px solid
+    var(--us-border-strong);
+
+}
+
+[data-userscript-root] .us-drawer-header {
+  display: flex;
+  align-items: center;
+  gap: var(--us-space-3);
+  min-height: var(--us-chrome-height);
+  padding: 0
+    var(--us-space-4);
+  border-bottom: 1px solid
+    var(--us-border);
+  border-bottom-color: var(--us-border);
+
+}
+
+[data-userscript-root] .us-drawer-title {
+
+  flex: 1 1 auto;
+
+  min-width: 0;
+
+  color: var(--us-fg);
+
+  font-size: var(--us-font-size);
+  font-weight: 600;
+
+}
+
+[data-userscript-root] .us-drawer-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  padding: var(--us-space-7)
+    var(--us-space-5);
+  gap: var(--us-space-5);
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ MODAL                                                                        │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-backdrop,
+[data-userscript-root] .us-modal-backdrop {
+
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: var(--us-space-5);
+
+  background: rgba(3, 5, 7, 0.62);
+
+  pointer-events: auto;
+
+}
+
+[data-userscript-root] .us-modal {
+  position: relative;
+  width: min(680px, 100%);
+  max-height: min(84vh, 900px);
+  overflow: auto;
+  border: 1px solid var(--us-border-strong);
+  border-radius: var(--us-radius-lg);
+  background: var(--us-surface-1);
+  color: var(--us-fg);
+  box-shadow: var(--us-shadow-dialog);
+
+}
+
+[data-userscript-root] .us-modal-header {
+
+  display: flex;
+  align-items: center;
+  gap: var(--us-space-3);
+  min-height: var(--us-chrome-height);
+  padding:
+    0
+    var(--us-space-4);
+
+  border-bottom:
+    1px solid
+    var(--us-border);
+
+  background: var(--us-surface-2);
+
+}
+
+[data-userscript-root] .us-modal-title {
+
+  flex: 1 1 auto;
+
+  color: var(--us-fg);
+
+  font-size: var(--us-font-size);
+  font-weight: 600;
+
+}
+
+[data-userscript-root] .us-modal-body {
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--us-space-4);
+
+  padding: var(--us-space-4);
+
+}
+
+[data-userscript-root] .us-modal-footer {
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--us-space-2);
+
+  padding:
+    var(--us-space-3)
+    var(--us-space-4);
+
+  border-top:
+    1px solid
+    var(--us-border);
+
+  background: var(--us-surface-2);
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ TOASTS                                                                       │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-toast-stack {
+
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--us-space-2);
+
+  width: min(340px, calc(100vw - 32px));
+
+  pointer-events: none;
+
+}
+
+[data-userscript-root] .us-toast {
+
+  display: flex;
+  align-items: flex-start;
+  gap: var(--us-space-3);
+
+  padding: var(--us-space-3);
+
+  border: 1px solid var(--us-border);
+  border-radius: var(--us-radius-md);
+
+  background: var(--us-surface-1);
+  color: var(--us-fg-secondary);
+
+  box-shadow: var(--us-shadow-popover);
+
+}
+
+[data-userscript-root] .us-toast-title {
+
+  color: var(--us-fg);
+
+  font-size: var(--us-font-size-sm);
+  font-weight: 600;
+
+}
+
+[data-userscript-root] .us-toast-message {
+
+  color: var(--us-fg-muted);
+
+  font-size: var(--us-font-size-xs);
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ TOOLTIP                                                                      │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-tooltip {
+  position: fixed;
+  max-width: 280px;
+  padding: 5px
+    7px;
+  border: 1px solid var(--us-border);
+  border-radius: 2px;
+  background: var(--us-surface-3);
+  color: var(--us-fg);
+  box-shadow: var(--us-shadow-popover);
+  font-size: var(--us-font-size-xs);
+  font-family: var(--us-font-sans);
+
+  pointer-events: none;
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ INLINE PAGE AUGMENTATION                                                     │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root].us-inline-root {
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--us-space-2);
+
+  vertical-align: middle;
+
+}
+
+[data-userscript-root] .us-inline-inspector {
+
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  padding:
+    2px
+    4px;
+
+  border: 1px solid var(--us-border);
+  border-radius: var(--us-radius-sm);
+
+  background: var(--us-surface-1);
+
+  box-shadow: var(--us-shadow-popover);
+
+}

@@ -1,0 +1,364 @@
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ ASSET PINNING / CAROUSEL                                                     │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-asset-pin-trigger {
+
+  position: fixed;
+
+  z-index: var(--us-z-pin);
+
+  border-color: var(--us-border-strong);
+
+  background:
+    color-mix(
+      in srgb,
+      var(--us-shell) 92%,
+      transparent
+    );
+
+  box-shadow:
+    3px
+    3px
+    0
+    var(--us-border);
+
+}
+
+[data-userscript-root] .us-asset-pin-trigger-active {
+
+  border-color: var(--us-accent);
+
+  color: var(--us-accent);
+
+}
+
+[data-userscript-root] .us-asset-tray[data-pinned="true"] .us-asset-tray-header {
+
+  border-bottom-color: var(--us-accent);
+
+}
+
+[data-userscript-root] .us-asset-preview-button {
+
+  width: 100%;
+  padding: 0;
+
+  border: 0;
+
+  color: inherit;
+
+  cursor: pointer;
+
+  font: inherit;
+
+  text-align: inherit;
+
+}
+
+[data-userscript-root] .us-asset-preview-button:hover,
+[data-userscript-root] .us-asset-preview-button:focus-visible {
+
+  z-index: 1;
+
+  outline:
+    2px solid
+    var(--us-accent);
+
+  outline-offset:
+    -2px;
+
+}
+
+[data-userscript-root] .us-asset-select-all {
+
+  white-space: nowrap;
+
+}
+
+[data-userscript-root] .us-asset-carousel-backdrop {
+
+  position: fixed;
+  inset: 0;
+
+  z-index: var(--us-z-modal);
+
+  display: grid;
+  place-items: center;
+
+  padding:
+    max(
+      15px,
+      env(safe-area-inset-top)
+    )
+    max(
+      15px,
+      env(safe-area-inset-right)
+    )
+    max(
+      15px,
+      env(safe-area-inset-bottom)
+    )
+    max(
+      15px,
+      env(safe-area-inset-left)
+    );
+
+  background:
+    color-mix(
+      in srgb,
+      #000 78%,
+      transparent
+    );
+
+  pointer-events: auto;
+
+}
+
+[data-userscript-root] .us-asset-carousel {
+
+  display: grid;
+
+  grid-template-rows:
+    auto
+    minmax(0, 1fr)
+    auto;
+
+  width:
+    min(
+      1000px,
+      calc(100vw - 30px)
+    );
+
+  max-height:
+    calc(100dvh - 30px);
+
+  border:
+    1px solid
+    var(--us-border-strong);
+
+  background: var(--us-shell);
+  color: var(--us-fg);
+
+  box-shadow:
+    5px
+    5px
+    0
+    #000;
+
+  outline: none;
+
+}
+
+[data-userscript-root] .us-asset-carousel:focus-visible {
+
+  border-color: var(--us-accent);
+
+}
+
+[data-userscript-root] .us-asset-carousel-header,
+[data-userscript-root] .us-asset-carousel-footer {
+
+  display: flex;
+  align-items: center;
+  gap: var(--us-space-2);
+
+  min-width: 0;
+  min-height: 44px;
+
+  padding:
+    var(--us-space-1)
+    var(--us-space-2);
+
+  background: var(--us-shell);
+
+}
+
+[data-userscript-root] .us-asset-carousel-header {
+
+  border-bottom:
+    1px solid
+    var(--us-border);
+
+}
+
+[data-userscript-root] .us-asset-carousel-footer {
+
+  justify-content: center;
+
+  border-top:
+    1px solid
+    var(--us-border);
+
+}
+
+[data-userscript-root] .us-asset-carousel-title {
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  color: var(--us-fg);
+
+  font-family: var(--us-font-meta);
+  font-size: var(--us-font-size-sm);
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}
+
+[data-userscript-root] .us-asset-carousel-stage {
+
+  display: grid;
+  place-items: center;
+
+  min-width: 0;
+  min-height: 240px;
+
+  overflow: hidden;
+
+  background: var(--us-canvas);
+
+}
+
+[data-userscript-root] .us-asset-carousel-media {
+
+  display: block;
+
+  max-width: 100%;
+  max-height:
+    calc(
+      100dvh
+      -
+      150px
+    );
+
+  object-fit: contain;
+
+}
+
+[data-userscript-root] .us-asset-carousel-placeholder,
+[data-userscript-root] .us-asset-carousel-empty {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--us-space-3);
+
+  min-height: 260px;
+
+  color: var(--us-fg-muted);
+
+}
+
+[data-userscript-root] .us-asset-carousel-placeholder svg {
+
+  width: 42px;
+  height: 42px;
+
+}
+
+[data-userscript-root] .us-asset-carousel-dots {
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+
+  min-width: 0;
+
+}
+
+[data-userscript-root] .us-asset-carousel-dot {
+
+  width: 12px;
+  height: 12px;
+
+  padding: 0;
+
+  border:
+    1px solid
+    var(--us-border-strong);
+
+  background: transparent;
+
+  cursor: pointer;
+
+}
+
+[data-userscript-root] .us-asset-carousel-dot-active {
+
+  border-color: var(--us-accent);
+
+  background: var(--us-accent);
+
+}
+
+@media (max-width: 520px) {
+
+  [data-userscript-root] .us-asset-carousel-backdrop {
+
+    padding: 8px;
+
+  }
+
+  [data-userscript-root] .us-asset-carousel {
+
+    width:
+      calc(
+        100vw
+        -
+        16px
+      );
+
+    max-height:
+      calc(
+        100dvh
+        -
+        16px
+      );
+
+  }
+
+  [data-userscript-root] .us-asset-carousel-header {
+
+    flex-wrap: wrap;
+
+  }
+
+  [data-userscript-root] .us-asset-carousel-title {
+
+    flex:
+      1
+      1
+      60%;
+
+  }
+
+  [data-userscript-root] .us-asset-carousel-stage {
+
+    min-height: 180px;
+
+  }
+
+}
+
+
+/* Asset tray pin controls are explicit and remain visible in compact trays. */
+[data-userscript-root] .us-asset-tray-actions {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+[data-userscript-root] .us-asset-pin-button {
+  white-space: nowrap;
+}
+
+[data-userscript-root] .us-asset-pin-button svg {
+  width: var(--us-action-icon-size);
+  height: var(--us-action-icon-size);
+}

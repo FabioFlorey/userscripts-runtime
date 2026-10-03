@@ -1,0 +1,763 @@
+│ FORM CONTROLS                                                                │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+}
+
+[data-userscript-root] .us-field-label {
+  color: var(--us-fg-muted);
+  font-size: var(--us-micro-size);
+  font-weight: 500;
+
+}
+
+[data-userscript-root] .us-input,
+[data-userscript-root] .us-select,
+[data-userscript-root] .us-textarea {
+  width: 100%;
+  min-height: var(--us-input-height);
+  border: 1px solid var(--us-border);
+  border-radius: 0;
+  background: var(--us-canvas);
+  color: var(--us-fg);
+  padding: 9px 11px;
+  border-color: var(--us-border);
+  font-family: var(--us-font-sans);
+
+}
+
+[data-userscript-root] .us-input,
+[data-userscript-root] .us-textarea {
+
+  padding:
+    var(--us-space-2)
+    var(--us-space-3);
+
+}
+
+[data-userscript-root] .us-select {
+
+  padding:
+    0
+    var(--us-space-3);
+
+}
+
+[data-userscript-root] .us-select-xs {
+
+  width: auto;
+  min-width: 70px;
+  min-height: 26px;
+
+  padding:
+    0
+    22px
+    0
+    7px;
+
+  font-family: var(--us-font-mono);
+  font-size: var(--us-font-size-xs);
+
+}
+
+[data-userscript-root] .us-textarea {
+
+  min-height: 88px;
+
+  resize: vertical;
+
+}
+
+[data-userscript-root] .us-input::placeholder,
+[data-userscript-root] .us-textarea::placeholder {
+
+  color: var(--us-fg-disabled);
+
+}
+
+/*
+ * Native input types share the same shell while retaining browser-native
+ * pickers where those are the most usable option (date, time, color, file).
+ */
+
+[data-userscript-root] .us-input-xs {
+
+  width: auto;
+  min-width: 72px;
+  min-height: 28px;
+
+  padding:
+    3px
+    7px;
+
+  font-size: var(--us-font-size-xs);
+
+}
+
+[data-userscript-root] .us-input-mono {
+
+  font-family: var(--us-font-mono);
+
+}
+
+[data-userscript-root] .us-input[type="color"] {
+
+  width: 48px;
+  min-width: 48px;
+
+  padding: 3px;
+
+  cursor: pointer;
+
+}
+
+[data-userscript-root] .us-input[type="color"]::-webkit-color-swatch-wrapper {
+
+  padding: 0;
+
+}
+
+[data-userscript-root] .us-input[type="color"]::-webkit-color-swatch {
+
+  border:
+    1px solid
+    var(--us-border-strong);
+
+  border-radius: var(--us-radius-xs);
+
+}
+
+[data-userscript-root] .us-input[type="file"] {
+
+  min-height: 36px;
+
+  padding: 3px;
+
+  font-size: var(--us-font-size-xs);
+
+}
+
+[data-userscript-root] .us-input[type="file"]::file-selector-button {
+
+  min-height: 28px;
+  margin-right: var(--us-space-2);
+  padding:
+    0
+    var(--us-space-3);
+
+  border:
+    1px solid
+    var(--us-border);
+
+  border-radius: var(--us-radius-xs);
+
+  background: var(--us-surface-2);
+  color: var(--us-fg-secondary);
+
+  cursor: pointer;
+
+  font: inherit;
+
+}
+
+[data-userscript-root] .us-input[type="file"]::file-selector-button:hover {
+
+  border-color: var(--us-border-strong);
+
+  background: var(--us-surface-hover);
+  color: var(--us-fg);
+
+}
+
+[data-userscript-root] .us-select[multiple] {
+
+  min-height: 96px;
+
+  padding:
+    var(--us-space-2);
+
+}
+
+[data-userscript-root] .us-select[multiple] option {
+
+  padding:
+    var(--us-space-2)
+    var(--us-space-3);
+
+  background: var(--us-canvas);
+  color: var(--us-fg-secondary);
+
+}
+
+[data-userscript-root] .us-select[multiple] option:checked {
+
+  background:
+    var(--us-accent)
+    linear-gradient(
+      var(--us-accent),
+      var(--us-accent)
+    );
+
+  color: var(--us-fg-inverse);
+
+}
+
+[data-userscript-root] .us-select[multiple] option:checked:focus {
+
+  background:
+    var(--us-accent-hover)
+    linear-gradient(
+      var(--us-accent-hover),
+      var(--us-accent-hover)
+    );
+
+  color: var(--us-fg-inverse);
+
+}
+
+[data-userscript-root] .us-field-hint {
+
+  color: var(--us-fg-disabled);
+
+  font-size: 10px;
+  line-height: 1.35;
+
+}
+
+
+/*
+ * Prefix / suffix fields are useful for operators, URLs, units and compact
+ * research bars such as site:, filetype:, after:, px, %, ms, etc.
+ */
+
+[data-userscript-root] .us-input-group {
+  display: flex;
+  align-items: stretch;
+  min-width: 0;
+  border: 1px solid
+    var(--us-border);
+  border-radius: 0;
+  overflow: hidden;
+  background: var(--us-canvas);
+  border-color: var(--us-border);
+
+}
+
+[data-userscript-root] .us-input-group:focus-within {
+  border-color: var(--us-accent);
+  box-shadow: none;
+
+}
+
+[data-userscript-root] .us-input-group > .us-input,
+[data-userscript-root] .us-input-group > .us-select {
+
+  min-width: 0;
+
+  border: 0;
+  border-radius: 0;
+
+  background: transparent;
+
+  box-shadow: none !important;
+
+}
+
+[data-userscript-root] .us-input-affix {
+  display: inline-flex;
+  align-items: center;
+  padding: 0
+    var(--us-space-2);
+  border-color: var(--us-border-subtle);
+  background: var(--us-surface-2);
+  color: var(--us-fg-muted);
+  font-family: var(--us-font-meta);
+  font-size: var(--us-font-size-xs);
+  white-space: nowrap;
+
+}
+
+[data-userscript-root] .us-input-prefix {
+
+  border-right:
+    1px solid
+    var(--us-border-subtle);
+
+}
+
+[data-userscript-root] .us-input-suffix {
+
+  border-left:
+    1px solid
+    var(--us-border-subtle);
+
+}
+
+
+/*
+ * Checkbox / radio labels stay intentionally close to the native controls.
+ */
+
+[data-userscript-root] .us-choice {
+
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--us-space-2);
+
+  color: var(--us-fg-secondary);
+
+  cursor: pointer;
+
+  font-size: var(--us-font-size-sm);
+  line-height: 1.35;
+
+}
+
+[data-userscript-root] .us-choice input {
+
+  width: 15px;
+  height: 15px;
+
+  margin:
+    1px
+    0
+    0;
+
+  accent-color: var(--us-accent);
+
+  flex:
+    0
+    0
+    15px;
+
+}
+
+[data-userscript-root] .us-choice-copy {
+
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+
+}
+
+[data-userscript-root] .us-choice:has(input:checked) {
+
+  color: var(--us-accent);
+
+}
+
+[data-userscript-root] .us-choice:has(input:checked) .us-choice-description {
+
+  color: var(--us-accent);
+
+}
+
+[data-userscript-root] .us-choice-description {
+
+  color: var(--us-fg-muted);
+
+  font-size: var(--us-font-size-xs);
+
+}
+
+[data-userscript-root] .us-choice-group {
+
+  display: flex;
+  flex-wrap: wrap;
+  gap:
+    var(--us-space-2)
+    var(--us-space-4);
+
+}
+
+
+/*
+ * Compact utility bars are intended for userscripts that add a dense research
+ * row above or inside an existing site header.
+ */
+
+[data-userscript-root] .us-utility-bar {
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap:
+    var(--us-space-2)
+    var(--us-space-3);
+
+  width: 100%;
+  padding:
+    var(--us-space-2)
+    var(--us-space-3);
+
+  border:
+    1px solid
+    var(--us-border);
+
+  border-radius: var(--us-radius-sm);
+
+  background: var(--us-shell);
+  color: var(--us-fg);
+
+  box-shadow: var(--us-shadow-popover);
+
+}
+
+[data-userscript-root] .us-utility-bar-fixed {
+
+  position: fixed;
+
+  top:
+    env(safe-area-inset-top);
+  right: 0;
+  left: 0;
+
+  z-index: var(--us-z-utility);
+
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  border-radius: 0;
+
+}
+
+[data-userscript-root] .us-utility-group {
+
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--us-space-2);
+
+  min-width: 0;
+
+}
+
+[data-userscript-root] .us-utility-label {
+
+  color: var(--us-fg-muted);
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+
+  white-space: nowrap;
+
+}
+
+[data-userscript-root] .us-utility-bar .us-input-xs {
+
+  width:
+    clamp(
+      100px,
+      14vw,
+      190px
+    );
+
+}
+
+[data-userscript-root] .us-utility-bar .us-input-date {
+
+  width:
+    clamp(
+      128px,
+      12vw,
+      155px
+    );
+
+}
+
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ SETTINGS CONTROLS                                                            │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+/*
+ * Settings controls are compact enough for popovers and drawers. Labels and
+ * descriptions stay separate from controls so accessibility text remains clear.
+ */
+
+[data-userscript-root] .us-settings-group {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--us-border);
+  border-radius: 0;
+  overflow: hidden;
+  background: var(--us-surface-1);
+
+}
+
+[data-userscript-root] .us-settings-group-title {
+  padding: var(--us-space-3)
+    var(--us-space-4);
+  border-bottom: 1px solid var(--us-border-subtle);
+  background: var(--us-surface-1);
+  color: var(--us-fg);
+  font-size: var(--us-font-size-sm);
+  font-weight: 600;
+  font-family: var(--us-font-meta);
+
+}
+
+[data-userscript-root] .us-setting-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr)
+    minmax(120px, auto);
+  gap: var(--us-space-4);
+  align-items: center;
+  min-height: 48px;
+  padding: var(--us-space-3)
+    var(--us-space-4);
+  border-bottom: 1px solid var(--us-border-subtle);
+
+}
+
+[data-userscript-root] .us-setting-row:last-child {
+
+  border-bottom: 0;
+
+}
+
+[data-userscript-root] .us-setting-copy {
+
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  min-width: 0;
+
+}
+
+[data-userscript-root] .us-setting-label {
+
+  color: var(--us-fg);
+
+  font-size: var(--us-font-size-sm);
+  font-weight: 500;
+
+}
+
+[data-userscript-root] .us-setting-description {
+
+  color: var(--us-fg-muted);
+
+  font-size: var(--us-font-size-xs);
+  line-height: 1.4;
+
+}
+
+[data-userscript-root] .us-setting-control {
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--us-space-2);
+
+  min-width: 0;
+
+}
+
+
+/*
+ * Range
+ */
+
+[data-userscript-root] .us-range-wrap {
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(110px, 1fr)
+    auto;
+
+  gap: var(--us-space-2);
+
+  align-items: center;
+
+  min-width: 170px;
+
+}
+
+[data-userscript-root] .us-range {
+
+  width: 100%;
+  height: 24px;
+
+  margin: 0;
+
+  accent-color: var(--us-accent);
+
+  cursor: pointer;
+
+}
+
+[data-userscript-root] .us-range-value {
+
+  min-width: 38px;
+
+  color: var(--us-fg-secondary);
+
+  font-family: var(--us-font-mono);
+  font-size: var(--us-font-size-xs);
+
+  text-align: right;
+
+}
+
+
+/*
+ * Switch
+ */
+
+[data-userscript-root] .us-switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: var(--us-switch-width);
+  height: var(--us-switch-height);
+  cursor: pointer;
+
+}
+
+[data-userscript-root] .us-switch-input {
+
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+}
+
+[data-userscript-root] .us-switch-track {
+
+  position: absolute;
+  inset: 0;
+
+  border: 1px solid var(--us-border-strong);
+  border-radius: var(--us-radius-pill);
+
+  background: var(--us-surface-3);
+
+}
+
+[data-userscript-root] .us-switch-thumb {
+  position: absolute;
+  top: 2.5px;
+  left: 2.5px;
+  width: var(--us-switch-thumb-size);
+  height: var(--us-switch-thumb-size);
+  border-radius: 50%;
+  background: var(--us-fg-secondary);
+  transition: transform 120ms ease,
+    background 120ms ease;
+
+}
+
+[data-userscript-root] .us-switch-input:checked + .us-switch-track {
+
+  border-color: var(--us-accent-border);
+
+  background: var(--us-accent-bg);
+
+}
+
+[data-userscript-root] .us-switch-input:checked + .us-switch-track .us-switch-thumb {  transform: translateX(var(--us-switch-thumb-shift));
+  background: var(--us-accent);
+
+}
+
+[data-userscript-root] .us-switch-input:focus-visible + .us-switch-track {
+
+  outline: 2px solid var(--us-accent);
+  outline-offset: 2px;
+
+}
+
+
+/*
+ * Segmented choices
+ */
+
+[data-userscript-root] .us-segmented {
+  display: inline-flex;
+  padding: 0;
+  border: 1px solid var(--us-border);
+  border-radius: 0;
+  background: var(--us-canvas);
+
+}
+
+[data-userscript-root] .us-segmented-option {
+  min-height: 28px;
+  padding: 0
+    9px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--us-fg-muted);
+  cursor: pointer;
+  font-size: var(--us-font-size-xs);
+  font-family: var(--us-font-meta);
+
+}
+
+[data-userscript-root] .us-segmented-option:hover {
+
+  background: var(--us-surface-hover);
+  color: var(--us-fg-secondary);
+
+}
+
+[data-userscript-root] .us-segmented-option-active {
+
+  border-color: var(--us-accent);
+
+  background: var(--us-accent);
+  color: var(--us-fg-inverse);
+
+  box-shadow: none;
+
+}
+
+[data-userscript-root] .us-segmented-option-active:hover {
+
+  background: var(--us-accent-hover);
+  color: var(--us-fg-inverse);
+
+}
+
+[data-userscript-root] .us-segmented-option:focus-visible {
+
+  outline: 2px solid var(--us-accent);
+  outline-offset: 1px;
+
+}
+
+@media (max-width: 520px) {
+
+  [data-userscript-root] .us-setting-row {
+
+    grid-template-columns:
+      minmax(0, 1fr);
+
+  }
+
+  [data-userscript-root] .us-setting-control {
+
+    justify-content: flex-start;
+
+  }
+
+}

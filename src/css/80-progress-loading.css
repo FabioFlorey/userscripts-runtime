@@ -1,0 +1,553 @@
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ GENERIC PROGRESS                                                             │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-progress-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+
+}
+
+[data-userscript-root] .us-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  width: 100%;
+
+}
+
+[data-userscript-root] .us-progress-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 15px;
+  min-width: 0;
+
+}
+
+[data-userscript-root] .us-progress-label {
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  color: var(--us-fg-secondary);
+
+  font-family: var(--us-font-sans);
+  font-size: var(--us-font-size-sm);
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}
+
+[data-userscript-root] .us-progress-text {
+
+  flex: 0 0 auto;
+
+  color:
+    var(
+      --us-tone-fg,
+      var(--us-fg-muted)
+    );
+
+  font-family: var(--us-font-meta);
+  font-size: var(--us-micro-size);
+
+}
+
+[data-userscript-root] .us-progress-track {
+  position: relative;
+  min-width: 0;
+  width: 100%;
+  height: var(--us-progress-height);
+  overflow: hidden;
+  border: 1px solid
+    var(
+      --us-tone-border,
+      var(--us-border)
+    );
+  background: var(--us-canvas);
+
+}
+
+[data-userscript-root] .us-progress-fill {
+
+  position: absolute;
+  inset:
+    0
+    auto
+    0
+    0;
+
+  width: 0;
+
+  background:
+    var(
+      --us-tone-fg,
+      var(--us-accent)
+    );
+
+  transition:
+    width
+    140ms
+    linear;
+
+}
+
+[data-userscript-root] .us-progress-compact {
+
+  gap: 3px;
+
+}
+
+[data-userscript-root] .us-progress-compact .us-progress-track {  height: var(--us-progress-compact-height);
+
+}
+
+[data-userscript-root] .us-progress-indeterminate .us-progress-fill {
+
+  width: 35%;
+
+  animation:
+    us-progress-indeterminate
+    1s
+    linear
+    infinite;
+
+}
+
+@keyframes us-progress-indeterminate {
+
+  0% {
+
+    left: -35%;
+
+  }
+
+  100% {
+
+    left: 100%;
+
+  }
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ LOADING INDICATORS                                                           │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+/* Square walker adapted to the runtime's geometry and semantic tone tokens. */
+[data-userscript-root] .us-spinner {
+
+  position: relative;
+
+  display: inline-block;
+
+  width: 30px;
+  height: 30px;
+
+  border: 0;
+
+  perspective: 150px;
+
+}
+
+[data-userscript-root] .us-spinner::before {
+
+  content: '';
+
+  display: block;
+
+  width: 50%;
+  height: 50%;
+
+  background:
+    var(
+      --us-tone-fg,
+      var(--us-accent)
+    );
+
+  animation:
+    us-flip-walker
+    2s
+    ease
+    infinite;
+
+}
+
+@keyframes us-flip-walker {
+
+  0% {
+    transform: translate(0, 0) rotateX(0) rotateY(0);
+  }
+
+  25% {
+    transform: translate(100%, 0) rotateX(0) rotateY(180deg);
+  }
+
+  50% {
+    transform: translate(100%, 100%) rotateX(-180deg) rotateY(180deg);
+  }
+
+  75% {
+    transform: translate(0, 100%) rotateX(-180deg) rotateY(360deg);
+  }
+
+  100% {
+    transform: translate(0, 0) rotateX(0) rotateY(360deg);
+  }
+
+}
+
+/*
+ * Skeleton variants share one animated surface. Variant geometry is CSS-owned;
+ * the JS component no longer writes arbitrary per-line widths inline.
+ */
+[data-userscript-root] .us-skeleton,
+[data-userscript-root] .us-skeleton-line,
+[data-userscript-root] .us-skeleton-card-media,
+[data-userscript-root] .us-skeleton-card-line,
+[data-userscript-root] .us-skeleton-table-cell {
+
+  border:
+    1px solid
+    var(--us-border-subtle);
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--us-surface-2) 0%,
+      var(--us-surface-3) 48%,
+      var(--us-surface-2) 100%
+    );
+
+  background-size:
+    220%
+    100%;
+
+  animation:
+    us-skeleton-shift
+    1.4s
+    linear
+    infinite;
+
+}
+
+[data-userscript-root] .us-skeleton {
+
+  min-height: 18px;
+
+  overflow: hidden;
+
+}
+
+[data-userscript-root] .us-skeleton-text {
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--us-space-2);
+
+  border: 0;
+  background: none;
+
+  animation: none;
+
+}
+
+[data-userscript-root] .us-skeleton-line {
+
+  display: block;
+
+  width: 100%;
+  height: 12px;
+
+}
+
+[data-userscript-root] .us-skeleton-line:last-child {
+
+  width: 72%;
+
+}
+
+[data-userscript-root] .us-skeleton-avatar {
+
+  width: 52px;
+  height: 52px;
+  min-height: 52px;
+
+  border-radius: 50%;
+
+}
+
+[data-userscript-root] .us-skeleton-image {
+
+  aspect-ratio: 16 / 9;
+
+  min-height: 0;
+
+}
+
+[data-userscript-root] .us-skeleton-card {
+
+  display: grid;
+
+  grid-template-columns:
+    88px
+    minmax(0, 1fr);
+
+  grid-template-rows:
+    auto
+    auto;
+
+  gap: var(--us-space-3);
+
+  min-height: 0;
+  padding: var(--us-space-3);
+
+  border:
+    1px solid
+    var(--us-border);
+
+  background: var(--us-surface-1);
+
+  animation: none;
+
+}
+
+[data-userscript-root] .us-skeleton-card-media {
+
+  grid-row: 1 / -1;
+
+  aspect-ratio: 1 / 1;
+
+}
+
+[data-userscript-root] .us-skeleton-card-line {
+
+  align-self: end;
+
+  height: 14px;
+
+}
+
+[data-userscript-root] .us-skeleton-card-line-short {
+
+  align-self: start;
+
+  width: 62%;
+
+}
+
+[data-userscript-root] .us-skeleton-table {
+
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+
+  min-height: 0;
+
+  border:
+    1px solid
+    var(--us-border);
+
+  background: var(--us-border);
+
+  animation: none;
+
+}
+
+[data-userscript-root] .us-skeleton-table-row {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      var(--us-skeleton-columns, 3),
+      minmax(0, 1fr)
+    );
+
+  gap: 1px;
+
+  background: var(--us-border);
+
+}
+
+[data-userscript-root] .us-skeleton-table-cell {
+
+  min-height: 30px;
+
+}
+
+@keyframes us-skeleton-shift {
+
+  from {
+    background-position: 100% 0;
+  }
+
+  to {
+    background-position: -120% 0;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  [data-userscript-root] .us-progress-fill {
+    transition: none;
+  }
+
+  [data-userscript-root] .us-progress-indeterminate .us-progress-fill,
+  [data-userscript-root] .us-spinner::before,
+  [data-userscript-root] .us-skeleton,
+  [data-userscript-root] .us-skeleton-line,
+  [data-userscript-root] .us-skeleton-card-media,
+  [data-userscript-root] .us-skeleton-card-line,
+  [data-userscript-root] .us-skeleton-table-cell {
+    animation: none;
+  }
+
+  [data-userscript-root] .us-progress-indeterminate .us-progress-fill {
+    left: 32%;
+  }
+
+  [data-userscript-root] .us-spinner::before {
+    transform: translate(50%, 50%);
+  }
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ SEGMENTED PROGRESS                                                           │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-segmented-progress {
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--us-space-2);
+
+  min-width: 0;
+  width: 100%;
+
+}
+
+[data-userscript-root] .us-segmented-progress-track {
+
+  display: flex;
+
+  width: 100%;
+  min-width: 0;
+  height: var(--us-progress-height);
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    var(--us-border);
+
+  background: var(--us-canvas);
+
+}
+
+[data-userscript-root] .us-segmented-progress-segment {
+
+  min-width: 0;
+  height: 100%;
+
+  background:
+    var(
+      --us-segment-color,
+      var(
+        --us-tone-fg,
+        var(--us-accent)
+      )
+    );
+
+  transition:
+    width
+    140ms
+    linear;
+
+}
+
+[data-userscript-root] .us-segmented-progress-segment + .us-segmented-progress-segment {
+
+  border-left:
+    1px solid
+    var(--us-canvas);
+
+}
+
+[data-userscript-root] .us-segmented-progress-legend {
+
+  display: flex;
+  flex-wrap: wrap;
+  gap:
+    var(--us-space-1)
+    var(--us-space-3);
+
+  min-width: 0;
+
+}
+
+[data-userscript-root] .us-segmented-progress-legend-item {
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--us-space-1);
+
+  color: var(--us-fg-muted);
+
+  font-family: var(--us-font-meta);
+  font-size: var(--us-micro-size);
+
+}
+
+[data-userscript-root] .us-segmented-progress-swatch {
+
+  width: 8px;
+  height: 8px;
+
+  background:
+    var(
+      --us-tone-fg,
+      var(--us-accent)
+    );
+
+}
+
+[data-userscript-root] .us-segmented-progress-legend-value {
+
+  color: var(--us-fg-secondary);
+
+}
+
+[data-userscript-root] .us-segmented-progress-compact .us-segmented-progress-track {
+
+  height: var(--us-progress-compact-height);
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  [data-userscript-root] .us-segmented-progress-segment {
+    transition: none;
+  }
+
+}

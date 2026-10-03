@@ -1,0 +1,570 @@
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ BADGES / TAGS                                                                │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 20px;
+  padding: 0
+    6px;
+  border: 1px solid var(--us-border);
+  border-radius: 0;
+  background: var(--us-canvas);
+  color: var(--us-fg-muted);
+  font-family: var(--us-font-meta);
+  font-size: var(--us-micro-size);
+  white-space: nowrap;
+
+}
+
+[data-userscript-root] .us-badge-accent {
+
+  border-color: var(--us-accent-border);
+
+  background: var(--us-accent-bg);
+  color: var(--us-accent);
+
+}
+
+[data-userscript-root] .us-badge-info {
+
+  border-color: var(--us-info-border);
+
+  background: var(--us-info-bg);
+  color: var(--us-info-fg);
+
+}
+
+[data-userscript-root] .us-badge-success {
+
+  border-color: var(--us-success-border);
+
+  background: var(--us-success-bg);
+  color: var(--us-success-fg);
+
+}
+
+[data-userscript-root] .us-badge-warning {
+
+  border-color: var(--us-warning-border);
+
+  background: var(--us-warning-bg);
+  color: var(--us-warning-fg);
+
+}
+
+[data-userscript-root] .us-badge-danger {
+
+  border-color: var(--us-danger-border);
+
+  background: var(--us-danger-bg);
+  color: var(--us-danger-fg);
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ STATUS                                                                       │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-status {
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  color: var(--us-fg-secondary);
+  font-size: var(--us-micro-size);
+
+}
+
+[data-userscript-root] .us-status::before {
+
+  content: '';
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: var(--us-radius-pill);
+
+  background: currentColor;
+
+}
+
+[data-userscript-root] .us-status-info {
+
+  color: var(--us-info-fg);
+
+}
+
+[data-userscript-root] .us-status-ok {
+
+  color: var(--us-success-fg);
+
+}
+
+[data-userscript-root] .us-status-warn {
+
+  color: var(--us-warning-fg);
+
+}
+
+[data-userscript-root] .us-status-error {
+
+  color: var(--us-danger-fg);
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ CALLOUTS                                                                     │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-callout {
+
+  display: flex;
+  gap: var(--us-space-3);
+
+  padding: var(--us-space-3);
+
+  border: 1px solid var(--us-border);
+  border-radius: var(--us-radius-sm);
+
+  background: var(--us-surface-2);
+  color: var(--us-fg-secondary);
+
+}
+
+[data-userscript-root] .us-callout-info {
+
+  border-color: var(--us-info-border);
+
+  background: var(--us-info-bg);
+
+}
+
+[data-userscript-root] .us-callout-success {
+
+  border-color: var(--us-success-border);
+
+  background: var(--us-success-bg);
+
+}
+
+[data-userscript-root] .us-callout-warning {
+
+  border-color: var(--us-warning-border);
+
+  background: var(--us-warning-bg);
+
+}
+
+[data-userscript-root] .us-callout-danger {
+
+  border-color: var(--us-danger-border);
+
+  background: var(--us-danger-bg);
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ METRICS                                                                      │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-metric-strip {
+  display: grid;
+  grid-template-columns: repeat(
+      auto-fit,
+      minmax(130px, 1fr)
+    );
+  overflow: hidden;
+  border: 1px solid var(--us-border);
+  border-radius: var(--us-radius-md);
+  background: transparent;
+
+}
+
+[data-userscript-root] .us-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  padding: var(--us-space-3)
+    var(--us-space-4);
+  border-right: 1px solid var(--us-border-subtle);
+  border-right-color: var(--us-border);
+
+}
+
+[data-userscript-root] .us-metric:last-child {
+
+  border-right: 0;
+
+}
+
+[data-userscript-root] .us-metric-label {
+
+  color: var(--us-fg-muted);
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+}
+
+[data-userscript-root] .us-metric-value {
+
+  overflow: hidden;
+
+  color: var(--us-fg);
+
+  font-size: var(--us-font-size);
+  font-weight: 500;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}
+
+[data-userscript-root] .us-metric-value-mono {
+
+  font-family: var(--us-font-mono);
+  font-size: var(--us-font-size-sm);
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ KEY / VALUE DATA                                                             │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-kv-list {
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(96px, auto)
+    minmax(0, 1fr);
+
+  gap:
+    var(--us-space-2)
+    var(--us-space-4);
+
+}
+
+[data-userscript-root] .us-kv-key {
+
+  color: var(--us-fg-muted);
+
+  font-size: var(--us-font-size-xs);
+
+}
+
+[data-userscript-root] .us-kv-value {
+
+  min-width: 0;
+  overflow: hidden;
+
+  color: var(--us-fg-secondary);
+
+  font-size: var(--us-font-size-sm);
+
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}
+
+[data-userscript-root] .us-kv-value-mono {
+
+  font-family: var(--us-font-mono);
+  font-size: var(--us-font-size-xs);
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ TABLES                                                                       │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-table-wrap {
+
+  min-width: 0;
+
+  overflow: auto;
+
+  border: 1px solid var(--us-border-subtle);
+  border-radius: var(--us-radius-sm);
+
+}
+
+[data-userscript-root] .us-table {
+
+  width: 100%;
+
+  border-collapse: collapse;
+
+  table-layout: fixed;
+
+  background: var(--us-canvas);
+
+}
+
+[data-userscript-root] .us-table th,
+[data-userscript-root] .us-table td {
+
+  padding:
+    7px
+    var(--us-space-3);
+
+  border-bottom: 1px solid var(--us-border-subtle);
+
+  overflow: hidden;
+
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}
+
+[data-userscript-root] .us-table th {
+
+  background: var(--us-surface-2);
+  color: var(--us-fg-muted);
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+
+}
+
+[data-userscript-root] .us-table td {
+
+  color: var(--us-fg-secondary);
+
+  font-size: var(--us-font-size-sm);
+
+}
+
+[data-userscript-root] .us-table tr:last-child td {
+
+  border-bottom: 0;
+
+}
+
+[data-userscript-root] .us-table tbody tr:hover {
+
+  background: var(--us-surface-1);
+
+}
+
+[data-userscript-root] .us-table-mono {
+
+  font-family: var(--us-font-mono);
+  font-size: var(--us-font-size-xs);
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ TABS                                                                         │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-tabs {
+
+  display: flex;
+  align-items: center;
+  gap: 2px;
+
+  border-bottom: 1px solid var(--us-border-subtle);
+
+}
+
+[data-userscript-root] .us-tab {
+
+  position: relative;
+
+  min-height: 30px;
+  padding:
+    0
+    var(--us-space-3);
+
+  border: 0;
+
+  background: transparent;
+  color: var(--us-fg-muted);
+
+  cursor: pointer;
+
+}
+
+[data-userscript-root] .us-tab:hover {
+
+  color: var(--us-fg-secondary);
+
+}
+
+[data-userscript-root] .us-tab-active {
+
+  color: var(--us-accent);
+
+}
+
+[data-userscript-root] .us-tab-active::after {
+
+  content: '';
+
+  position: absolute;
+  right: var(--us-space-3);
+  bottom: -1px;
+  left: var(--us-space-3);
+
+  height: 2px;
+
+  background: var(--us-accent);
+
+}
+
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ TOOL NAVIGATION                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+/*
+ * Compact numbered navigation is useful inside injected drawers where a full
+ * application sidebar would be disproportionate.
+ */
+
+[data-userscript-root] .us-tool-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+}
+
+[data-userscript-root] .us-tool-nav-item {
+  display: grid;
+  grid-template-columns: 2.2rem
+    18px
+    minmax(0, 1fr)
+    auto;
+  gap: 0.65rem;
+  align-items: center;
+  min-height: auto;
+  padding: 0.4rem
+    0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--us-fg);
+  cursor: pointer;
+  text-align: left;
+  border-bottom: 1px solid var(--us-border);
+  font-family: var(--us-font-sans);
+
+}
+
+[data-userscript-root] .us-tool-nav-item:hover {
+  border-color: var(--us-border);
+  background: transparent;
+  color: var(--us-fg);
+  opacity: 0.6;
+
+}
+
+[data-userscript-root] .us-tool-nav-item-active {
+  border-color: var(--us-border);
+  background: transparent;
+  color: var(--us-accent);
+
+}
+
+[data-userscript-root] .us-tool-nav-index {
+  color: var(--us-fg-muted);
+  font-family: var(--us-font-pixel);
+  font-size: 8px;
+
+}
+
+[data-userscript-root] .us-tool-nav-index::after {
+
+  content: ' >';
+
+}
+
+[data-userscript-root] .us-tool-nav-item-active .us-tool-nav-index {
+
+  color: var(--us-accent);
+
+}
+
+[data-userscript-root] .us-tool-nav-icon {
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+[data-userscript-root] .us-tool-nav-icon svg {
+
+  width: 14px;
+  height: 14px;
+
+}
+
+[data-userscript-root] .us-tool-nav-label {
+  min-width: 0;
+  overflow: hidden;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--us-font-sans);
+
+}
+
+[data-userscript-root] .us-tool-section {
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--us-space-3);
+
+}
+
+[data-userscript-root] .us-tool-section-heading {
+
+  color: var(--us-fg-muted);
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+
+}
+
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐

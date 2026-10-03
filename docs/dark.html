@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>Fabio's Userscript Components Playground — Dark</title>
+
+  <link
+    rel="stylesheet"
+    href="./styles/fonts.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="./styles/base.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="./styles/themes/dark.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="./styles/themes/light.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="./gallery.css"
+  >
+
+</head>
+<body>
+
+  <header class="site-header">
+
+    <div class="site-brand">
+      Fabio's Userscript Components Playground
+    </div>
+
+    <label class="site-search">
+      <input
+        type="search"
+        value="component gallery"
+        aria-label="Search"
+      >
+    </label>
+
+    <nav class="site-nav" aria-label="Playground pages">
+      <a href="./index.html">index</a>
+      <a href="./light.html">light</a>
+      <a href="./dark.html" aria-current="page">dark</a>
+    </nav>
+
+  </header>
+
+
+  <main class="page">
+
+    <div class="docs-banner">
+
+      <strong>
+        Runtime component playground
+      </strong>
+
+      <span>
+        Dark theme reference for spacing, states, controls, overlays and injected UI composition.
+      </span>
+
+      <a href="./light.html">
+        View light version
+      </a>
+
+    </div>
+
+
+    <section class="site-card action-catalog">
+
+      <div class="site-card-header">
+
+        <div class="site-meta">
+
+          <strong>
+            Runtime action buttons
+          </strong>
+
+          <span>
+            Every icon-only action button is a true square. Semantic actions reuse a shared symbol vocabulary.
+          </span>
+
+        </div>
+
+      </div>
+
+      <div class="site-card-body">
+
+        <div id="action-gallery"></div>
+
+        <div class="component-note">
+          Buttons are generated from <code>UI.ACTIONS</code>. The raw shared icon vocabulary is shown underneath for comparison.
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="site-card">
+
+      <div class="site-card-header">
+
+        <div class="site-meta">
+
+          <strong>
+            Feedback, alerts & semantic tones
+          </strong>
+
+          <span>
+            Pills, inline alerts, screen alerts, toasts and click-triggered dialogs share one color vocabulary.
+          </span>
+
+        </div>
+
+      </div>
+
+      <div class="site-card-body">
+        <div id="feedback-gallery"></div>
+      </div>
+
+    </section>
+
+
+    <section class="site-card">
+
+      <div class="site-card-header">
+
+        <div class="site-meta">
+
+          <strong>
+            Form controls
+          </strong>
+
+          <span>
+            Native browser inputs plus composed userscript controls, validation colors and operator-style fields.
+          </span>
+
+        </div>
+
+      </div>
+
+      <div class="site-card-body">
+        <div id="input-gallery"></div>
+      </div>
+
+    </section>
+
+
+    <section class="site-card">
+
+      <div class="site-card-header">
+
+        <div class="site-meta">
+
+          <strong>
+            Dense utility bar
+          </strong>
+
+          <span>
+            Compact prefixed fields, dates, selects and quick pills for scripts that add a utility row above a site header.
+          </span>
+
+        </div>
+
+      </div>
+
+      <div class="site-card-body">
+        <div id="utility-gallery"></div>
+      </div>
+
+    </section>
+
+
+    <section class="site-card">
+
+      <div class="site-card-header">
+
+        <div class="site-meta">
+
+          <strong>
+            Runtime visual primitives
+          </strong>
+
+          <span>
+            Terminal identity, numbered navigation, flat chrome, offset feedback, external-link cues and compact metadata.
+          </span>
+
+        </div>
+
+      </div>
+
+      <div class="site-card-body">
+        <div id="inspiration-gallery"></div>
+      </div>
+
+    </section>
+
+
+    <section class="site-card">
+
+      <div class="site-card-header">
+
+        <div class="site-meta">
+
+          <strong>
+            Files, hover assets & progress
+          </strong>
+
+          <span>
+            Generic asset trays, drag-and-drop file picking, loading states and determinate progress.
+          </span>
+
+        </div>
+
+      </div>
+
+      <div class="site-card-body">
+
+        <div class="utility-demo-grid">
+
+          <div>
+
+            <div class="catalog-subtitle">
+              Hover asset tray
+            </div>
+
+            <div
+              class="asset-hover-demo-target"
+              id="asset-hover-target"
+              tabindex="0"
+            >
+              Hover or focus this preview
+            </div>
+
+          </div>
+
+          <div>
+
+            <div class="catalog-subtitle">
+              File picker
+            </div>
+
+            <div id="file-picker-gallery"></div>
+
+          </div>
+
+        </div>
+
+        <div class="catalog-subtitle">
+          Progress & loading
+        </div>
+
+        <div id="progress-gallery"></div>
+
+        <div class="catalog-subtitle">
+          Persistent notepad
+        </div>
+
+        <div id="notepad-gallery"></div>
+
+        <div class="catalog-subtitle">
+          Text selection & annotation
+        </div>
+
+        <div id="annotation-mode-gallery"></div>
+
+        <div
+          class="selection-demo-copy"
+          id="selection-demo"
+        >
+          Select any part of this paragraph. The selection palette can copy,
+          underline, highlight with several colors, or attach a note. Notes are
+          shown as tooltips when the annotated text is hovered or focused.
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <div class="site-layout">
+
+      <div class="site-main">
+
+
+        <section class="site-card">
+
+          <div class="site-card-body">
+
+            <div class="search-query">
+              component API documentation
+            </div>
+
+            <div class="search-count">
+              About 14,200 results
+            </div>
+
+
+            <article
+              class="search-result"
+              id="result-1"
+            >
+
+              <div class="search-url-row">
+
+                <span class="search-url">
+                  docs.example.net › components › forms
+                </span>
+
+                <span
+                  class="inject-slot"
+                  id="result-inline"
+                ></span>
+
+              </div>
+
+              <div class="search-title">
+                Building accessible form controls
+              </div>
+
+              <div class="search-description">
+                Text fields, selects, date pickers, validation states and responsive form behavior.
+              </div>
+
+            </article>
+
+
+            <article class="search-result">
+
+              <div class="search-url-row">
+
+                <span class="search-url">
+                  engineering.example.org › ui-composition
+                </span>
+
+              </div>
+
+              <div class="search-title">
+                Composing contextual controls
+              </div>
+
+              <div class="search-description">
+                Patterns for composing actions, popovers, drawers and reusable component state.
+              </div>
+
+            </article>
+
+
+            <article class="search-result">
+
+              <div class="search-url-row">
+
+                <span class="search-url">
+                  standards.example.com › ui
+                </span>
+
+              </div>
+
+              <div class="search-title">
+                Component state reference
+              </div>
+
+              <div class="search-description">
+                State transitions, selection behavior and
+                responsive composition patterns.
+              </div>
+
+            </article>
+
+            <div class="component-note">
+              Hover the first result. Injected components:
+              <code>inlineRoot()</code>,
+              <code>badge()</code>,
+              <code>copyCommandButton()</code>,
+              <code>attachHoverToolbar()</code>.
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <section class="site-card">
+
+          <div class="site-card-header">
+
+            <div class="site-avatar"></div>
+
+            <div class="site-meta">
+              <strong>alex.rivera</strong>
+              <span>2 minutes ago · public</span>
+            </div>
+
+          </div>
+
+          <div
+            class="social-media"
+            id="social-media"
+          ></div>
+
+          <div class="social-actions">
+            <span>♡ Like</span>
+            <span>◯ Comment</span>
+            <span>↗ Share</span>
+          </div>
+
+          <div class="site-card-body">
+
+            <p class="site-muted">
+              Hover the preview itself. The action toolbar is not part of the host layout; it is positioned above the element by the userscript.
+            </p>
+
+            <div class="component-note">
+              Injected component:
+              <code>attachHoverToolbar()</code>.
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <section class="site-card">
+
+          <div class="site-card-header">
+
+            <div class="site-meta">
+
+              <strong>
+                Product demo video
+              </strong>
+
+              <span>
+                3.8K watching
+              </span>
+
+            </div>
+
+            <span
+              class="inject-slot"
+              id="video-inline"
+              style="margin-left:auto"
+            ></span>
+
+          </div>
+
+          <div
+            class="video-wrap"
+            id="video-target"
+          >
+
+            <div class="video-center">
+              ▶
+            </div>
+
+            <div class="video-chrome">
+              <span>▶</span>
+              <div class="video-progress"></div>
+              <span>1:12:44</span>
+              <span>⚙</span>
+            </div>
+
+          </div>
+
+          <div class="site-card-body">
+
+            <p class="site-muted">
+              Hover the player for contextual actions. Click the injected options control in the header to open an anchored popover.
+            </p>
+
+            <div class="component-note">
+              Injected components:
+              <code>badge()</code>,
+              <code>attachPopover()</code>,
+              <code>dataTable()</code>,
+              <code>attachHoverToolbar()</code>.
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <article class="site-card">
+
+          <div class="site-card-body">
+
+            <h1 class="article-title">
+              Why reusable UI primitives matter
+            </h1>
+
+            <div class="article-byline">
+              Research Desk · 8 min read
+            </div>
+
+            <div class="article-body">
+
+              <p>
+                Modern web applications routinely combine forms, state, navigation and dynamic content. Shared components help keep those interactions consistent without forcing each userscript to rebuild the same UI.
+              </p>
+
+              <p>
+                During testing, an analyst may care about the
+                <span
+                  class="inspectable-text"
+                  id="article-term"
+                >component state boundary</span>, the current selection, or the relationship between a control and the state it changes.
+              </p>
+
+              <p>
+                Small contextual controls are often more useful than replacing
+                the page. A hover action, popover, tooltip or drawer can expose
+                tooling exactly where the relevant information already exists.
+              </p>
+
+              <p>
+                This paragraph has an injected contextual control beside it
+                <span
+                  class="inject-slot"
+                  id="article-inline"
+                ></span>.
+              </p>
+
+            </div>
+
+            <div class="component-note">
+              Hover the underlined phrase and click the eye control.
+              Injected components:
+              <code>attachTooltip()</code>,
+              <code>inlineInspector()</code>,
+              <code>attachPopover()</code>.
+            </div>
+
+          </div>
+
+        </article>
+
+
+      </div>
+
+
+      <aside class="site-rail">
+
+        <section class="site-card rail-card">
+
+          <h3>
+            Playground scope
+          </h3>
+
+          <p>
+            This page exists to exercise runtime components in realistic host-page layouts and expose visual or interaction regressions.
+          </p>
+
+          <ul>
+            <li>controls and form states</li>
+            <li>spacing and responsive wrapping</li>
+            <li>hover and selection surfaces</li>
+            <li>drawers, modals and floating windows</li>
+            <li>feedback, progress and loading states</li>
+            <li>light, dark and accessibility modes</li>
+          </ul>
+
+        </section>
+
+        <section class="site-card rail-card">
+
+          <h3>
+            Floating controls
+          </h3>
+
+          <p>
+            Bottom-left: settings launcher. Bottom-right: tools launcher. The annotation launcher appears separately when page-wide annotation mode is mounted.
+          </p>
+
+        </section>
+
+        <section class="site-card rail-card">
+
+          <h3>
+            Theme reference
+          </h3>
+
+          <p>
+            The playground loads <code>base.css</code> and both theme files so controls can be inspected live across theme, contrast, size, density and motion states.
+          </p>
+
+        </section>
+
+      </aside>
+
+    </div>
+
+  </main>
+
+
+  <script src="./components/ui.js"></script>
+  <script src="./gallery.js"></script>
+
+</body>
+</html>

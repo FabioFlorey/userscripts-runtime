@@ -1,0 +1,383 @@
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ RESPONSIVE LAYOUT                                                            │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+
+/*
+ * Overlay components must remain usable on small mobile viewports because they
+ * are injected into arbitrary sites whose own responsive layout is outside our
+ * control.
+ */
+
+@media (max-width: 680px) {
+
+  [data-userscript-root] .us-utility-bar {
+
+    gap: var(--us-space-2);
+
+  }
+
+  [data-userscript-root] .us-utility-bar .us-utility-group {
+
+    flex:
+      1
+      1
+      100%;
+
+  }
+
+  [data-userscript-root] .us-utility-bar .us-input-xs {
+
+    width: auto;
+
+    flex:
+      1
+      1
+      120px;
+
+  }
+
+  [data-userscript-root] .us-utility-bar .us-input-group {
+
+    flex:
+      1
+      1
+      150px;
+
+  }
+
+  [data-userscript-root] .us-popover {
+
+    width:
+      min(
+        360px,
+        calc(100vw - 16px)
+      );
+
+    max-height:
+      calc(100dvh - 16px);
+
+  }
+
+  [data-userscript-root] .us-hover-toolbar {
+
+    max-width:
+      calc(100vw - 16px);
+
+    flex-wrap: wrap;
+
+  }
+
+  [data-userscript-root] .us-action-strip {
+
+    max-width: 100%;
+
+    flex-wrap: wrap;
+
+  }
+
+  [data-userscript-root] .us-drawer {
+
+    width: 100vw;
+    max-width: none;
+
+  }
+
+  [data-userscript-root] .us-drawer-left,
+  [data-userscript-root] .us-drawer-right {
+
+    border-right: 0;
+    border-left: 0;
+
+  }
+
+  [data-userscript-root] .us-drawer-header {
+
+    min-height: 46px;
+
+    padding:
+      env(safe-area-inset-top)
+      max(
+        var(--us-space-3),
+        env(safe-area-inset-right)
+      )
+      0
+      max(
+        var(--us-space-3),
+        env(safe-area-inset-left)
+      );
+
+  }
+
+  [data-userscript-root] .us-drawer-body {
+
+    padding:
+      var(--us-space-3)
+      max(
+        var(--us-space-3),
+        env(safe-area-inset-right)
+      )
+      max(
+        var(--us-space-4),
+        env(safe-area-inset-bottom)
+      )
+      max(
+        var(--us-space-3),
+        env(safe-area-inset-left)
+      );
+
+  }
+
+  [data-userscript-root] .us-modal-backdrop,
+  [data-userscript-root] .us-backdrop {
+
+    align-items: flex-end;
+
+    padding:
+      8px
+      8px
+      max(
+        8px,
+        env(safe-area-inset-bottom)
+      );
+
+  }
+
+  [data-userscript-root] .us-modal {
+
+    width: 100%;
+    max-height: 90dvh;
+
+    border-radius:
+      var(--us-radius-lg)
+      var(--us-radius-lg)
+      0
+      0;
+
+  }
+
+  [data-userscript-root] .us-toast-stack {
+
+    right: 8px;
+    bottom:
+      max(
+        8px,
+        env(safe-area-inset-bottom)
+      );
+    left: 8px;
+
+    width: auto;
+
+  }
+
+  [data-userscript-root] .us-floating-action-bottom-right {
+
+    right:
+      max(
+        10px,
+        env(safe-area-inset-right)
+      );
+
+    bottom:
+      max(
+        10px,
+        env(safe-area-inset-bottom)
+      );
+
+  }
+
+  [data-userscript-root] .us-floating-action-bottom-left {
+
+    bottom:
+      max(
+        10px,
+        env(safe-area-inset-bottom)
+      );
+
+    left:
+      max(
+        10px,
+        env(safe-area-inset-left)
+      );
+
+  }
+
+  [data-userscript-root] .us-media-source-row {
+
+    grid-template-columns:
+      minmax(0, 1fr);
+
+  }
+
+  [data-userscript-root] .us-media-source-row > .us-action-strip {
+
+    justify-self: start;
+
+  }
+
+  [data-userscript-root] .us-panel-header {
+
+    flex-wrap: wrap;
+
+  }
+
+  [data-userscript-root] .us-panel-actions {
+
+    max-width: 100%;
+
+    flex-wrap: wrap;
+
+  }
+
+  [data-userscript-root] .us-page-header {
+
+    flex-direction: column;
+
+  }
+
+  [data-userscript-root] .us-tabs {
+
+    overflow-x: auto;
+
+    scrollbar-width: thin;
+
+  }
+
+  [data-userscript-root] .us-segmented {
+
+    max-width: 100%;
+
+    overflow-x: auto;
+
+  }
+
+}
+
+@media (max-width: 430px) {
+
+  [data-userscript-root] .us-kv-list {
+
+    grid-template-columns:
+      minmax(0, 1fr);
+
+  }
+
+  [data-userscript-root] .us-kv-value {
+
+    text-align: left;
+
+  }
+
+  [data-userscript-root] .us-metric-strip {
+
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+  }
+
+  [data-userscript-root] .us-command {
+
+    grid-template-columns:
+      minmax(0, 1fr);
+
+  }
+
+  [data-userscript-root] .us-command > .us-action-button {
+
+    justify-self: end;
+
+  }
+
+}
+
+
+@media (max-width: 1100px) {
+
+  [data-userscript-root].us-app {
+
+    grid-template-areas:
+      "header header"
+      "left main"
+      "right right"
+      "footer footer";
+
+    grid-template-columns:
+      var(--us-left-width)
+      minmax(0, 1fr);
+
+  }
+
+  [data-userscript-root] .us-sidebar-right {
+
+    border-top: 1px solid var(--us-border);
+    border-left: 0;
+
+  }
+
+}
+
+@media (max-width: 760px) {
+
+  [data-userscript-root].us-app {
+
+    display: block;
+
+  }
+
+  [data-userscript-root] .us-header {
+
+    position: sticky;
+    top: 0;
+
+    z-index: var(--us-z-sticky);
+
+  }
+
+  [data-userscript-root] .us-header-search {
+
+    display: none;
+
+  }
+
+  [data-userscript-root] .us-sidebar-left,
+  [data-userscript-root] .us-sidebar-right {
+
+    border: 0;
+    border-bottom: 1px solid var(--us-border);
+
+  }
+
+  [data-userscript-root] .us-app-main {
+
+    padding: var(--us-space-4);
+
+  }
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ MOTION                                                                       │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+@media (prefers-reduced-motion: no-preference) {
+
+  [data-userscript-root] .us-button,
+  [data-userscript-root] .us-side-nav-link,
+  [data-userscript-root] .us-tab {
+
+    transition:
+      background 100ms ease,
+      border-color 100ms ease,
+      color 100ms ease;
+
+  }
+
+}

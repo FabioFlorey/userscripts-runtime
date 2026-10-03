@@ -1,0 +1,317 @@
+│ BOX MODEL                                                                    │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root],
+[data-userscript-root] *,
+[data-userscript-root] *::before,
+[data-userscript-root] *::after {
+
+  box-sizing: border-box;
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ TYPOGRAPHY                                                                   │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] h1,
+[data-userscript-root] h2,
+[data-userscript-root] h3,
+[data-userscript-root] h4,
+[data-userscript-root] p {
+
+  margin: 0;
+
+}
+
+[data-userscript-root] h1,
+[data-userscript-root] h2,
+[data-userscript-root] h3,
+[data-userscript-root] h4 {
+
+  color: var(--us-fg);
+
+  font-family: var(--us-font-sans);
+  letter-spacing: -0.01em;
+
+}
+
+[data-userscript-root] h1 {
+
+  font-size: var(--us-font-size-xl);
+  font-weight: 600;
+
+}
+
+[data-userscript-root] h2 {
+
+  font-size: var(--us-font-size-lg);
+  font-weight: 600;
+
+}
+
+[data-userscript-root] h3,
+[data-userscript-root] h4 {
+
+  font-size: var(--us-font-size);
+  font-weight: 600;
+
+}
+
+[data-userscript-root] .us-secondary {
+
+  color: var(--us-fg-secondary);
+
+}
+
+[data-userscript-root] .us-muted {
+
+  color: var(--us-fg-muted);
+
+}
+
+[data-userscript-root] .us-mono {
+
+  font-family: var(--us-font-mono);
+
+}
+
+[data-userscript-root] .us-code-inline {
+
+  padding:
+    1px
+    4px;
+
+  border: 1px solid var(--us-border-subtle);
+  border-radius: var(--us-radius-xs);
+
+  background: var(--us-canvas);
+  color: #c9d4dc;
+
+  font-family: var(--us-font-mono);
+  font-size: var(--us-font-size-sm);
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ SCROLLBARS                                                                   │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root]::-webkit-scrollbar,
+[data-userscript-root] *::-webkit-scrollbar {
+
+  width: 9px;
+  height: 9px;
+
+}
+
+[data-userscript-root]::-webkit-scrollbar-track,
+[data-userscript-root] *::-webkit-scrollbar-track {
+
+  background: var(--us-shell);
+
+}
+
+[data-userscript-root]::-webkit-scrollbar-thumb,
+[data-userscript-root] *::-webkit-scrollbar-thumb {
+
+  border: 2px solid var(--us-shell);
+  border-radius: var(--us-radius-pill);
+
+  background: var(--us-border-strong);
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ LAYOUT PRIMITIVES                                                            │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-row {
+
+  display: flex;
+  align-items: center;
+  gap: var(--us-space-3);
+
+}
+
+[data-userscript-root] .us-row-tight {
+
+  gap: var(--us-space-2);
+
+}
+
+[data-userscript-root] .us-row-wrap {
+
+  flex-wrap: wrap;
+
+}
+
+[data-userscript-root] .us-column {
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--us-space-3);
+
+}
+
+[data-userscript-root] .us-column-tight {
+
+  gap: var(--us-space-2);
+
+}
+
+
+/*
+ * Semantic composition helpers. These make spacing intent explicit and avoid
+ * accumulating ad-hoc adjacent-selector margins as the component set grows.
+ */
+
+[data-userscript-root] .us-stack {
+
+  display: flex;
+  flex-direction: column;
+
+  gap:
+    var(
+      --us-stack-gap,
+      var(--us-space-4)
+    );
+
+  min-width: 0;
+
+}
+
+[data-userscript-root] .us-stack-tight {
+
+  --us-stack-gap:
+    var(--us-space-2);
+
+}
+
+[data-userscript-root] .us-cluster {
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  gap:
+    var(
+      --us-cluster-gap,
+      var(--us-space-3)
+    );
+
+  min-width: 0;
+
+}
+
+[data-userscript-root] .us-cluster-tight {
+
+  --us-cluster-gap:
+    var(--us-space-2);
+
+}
+
+[data-userscript-root] .us-section-gap {
+
+  margin-block-start:
+    var(--us-space-6);
+
+}
+
+[data-userscript-root] .us-spacer {
+
+  flex: 1 1 auto;
+
+}
+
+[data-userscript-root] .us-divider {
+
+  width: 100%;
+  height: 1px;
+
+  background: var(--us-border-subtle);
+
+}
+
+[data-userscript-root] .us-grid {
+
+  display: grid;
+  gap: var(--us-space-4);
+
+  min-width: 0;
+
+}
+
+[data-userscript-root] .us-grid-2 {
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+}
+
+[data-userscript-root] .us-grid-3 {
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+
+}
+
+[data-userscript-root] .us-grid-span-2 {
+
+  grid-column:
+    span
+    2;
+
+}
+
+[data-userscript-root] .us-grid-span-3 {
+
+  grid-column:
+    span
+    3;
+
+}
+
+[data-userscript-root] [hidden],
+[data-userscript-root].us-overlay-root [hidden],
+[data-userscript-root] .us-hidden {
+
+  display: none !important;
+
+}
+
+[data-userscript-root] .us-visually-hidden {
+
+  position: absolute !important;
+
+  width: 1px !important;
+  height: 1px !important;
+
+  padding: 0 !important;
+  margin: -1px !important;
+
+  overflow: hidden !important;
+
+  clip: rect(0, 0, 0, 0) !important;
+
+  white-space: nowrap !important;
+
+  border: 0 !important;
+
+}

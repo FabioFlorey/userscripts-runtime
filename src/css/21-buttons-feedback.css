@@ -1,0 +1,489 @@
+│ BUTTONS                                                                      │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] button,
+[data-userscript-root] input,
+[data-userscript-root] select,
+[data-userscript-root] textarea {
+
+  font: inherit;
+
+}
+
+[data-userscript-root] .us-button {
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--us-space-2);
+
+  min-height: var(--us-control-height);
+  padding:
+    0
+    var(--us-space-3);
+
+  border: 1px solid var(--us-border);
+  border-radius: 0;
+
+  background: transparent;
+  color: var(--us-fg-secondary);
+
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+
+  font-family: var(--us-font-meta);
+  font-weight: 500;
+
+  transition:
+    color 120ms linear,
+    border-color 120ms linear,
+    background 120ms linear,
+    transform 100ms linear;
+
+}
+
+[data-userscript-root] .us-button:hover {
+  border-color: var(--us-accent);
+  background: transparent;
+  color: var(--us-accent);
+
+}
+
+[data-userscript-root] .us-button:active {
+  background: var(--us-surface-active);
+  transform: translate(1px, 1px);
+
+}
+
+[data-userscript-root] .us-button:disabled {
+
+  border-color: var(--us-border-subtle);
+
+  background: var(--us-surface-1);
+  color: var(--us-fg-disabled);
+
+  cursor: not-allowed;
+
+}
+
+[data-userscript-root] .us-button-primary {
+  border-color: var(--us-fg);
+  background: var(--us-fg);
+  color: var(--us-fg-inverse);
+  font-weight: 600;
+
+}
+
+[data-userscript-root] .us-button-primary:hover {
+  border-color: var(--us-accent);
+  background: var(--us-accent);
+  color: var(--us-fg-inverse);
+
+}
+
+[data-userscript-root] .us-button-danger {
+  border-color: var(--us-danger-border);
+  background: transparent;
+  color: var(--us-danger-fg);
+
+}
+
+[data-userscript-root] .us-button-xs {
+
+  min-height: var(--us-control-height-xs);
+  padding:
+    0
+    var(--us-space-2);
+
+  font-size: var(--us-font-size-xs);
+
+}
+
+[data-userscript-root] .us-icon-button-xs,
+[data-userscript-root] .us-action-button {
+
+  width: var(--us-action-size);
+  min-width: var(--us-action-size);
+  max-width: var(--us-action-size);
+
+  height: var(--us-action-size);
+  min-height: var(--us-action-size);
+  max-height: var(--us-action-size);
+
+  padding: 0;
+
+  aspect-ratio: 1 / 1;
+  border-radius: 0;
+
+  flex:
+    0
+    0
+    var(--us-action-size);
+
+}
+
+[data-userscript-root] .us-icon-button-xs svg,
+[data-userscript-root] .us-action-button svg {
+
+  width: var(--us-action-icon-size);
+  height: var(--us-action-icon-size);
+
+  flex:
+    0
+    0
+    var(--us-action-icon-size);
+
+}
+
+[data-userscript-root] .us-button:focus-visible,
+[data-userscript-root] .us-input:focus-visible,
+[data-userscript-root] .us-select:focus-visible,
+[data-userscript-root] .us-textarea:focus-visible,
+[data-userscript-root] .us-side-nav-link:focus-visible,
+[data-userscript-root] .us-tab:focus-visible {
+
+  outline: 2px solid var(--us-accent);
+  outline-offset: 1px;
+
+}
+
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ SEMANTIC TONES                                                               │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+/*
+ * Tone classes only define semantic variables. Components decide how strongly
+ * to apply them, so the same vocabulary works for pills, alerts, toasts and
+ * validation states.
+ */
+
+[data-userscript-root] .us-tone-neutral {
+
+  --us-tone-fg: var(--us-fg-secondary);
+  --us-tone-bg: var(--us-surface-2);
+  --us-tone-border: var(--us-border);
+
+}
+
+[data-userscript-root] .us-tone-page {
+
+  --us-tone-fg: var(--us-fg);
+  --us-tone-bg: var(--us-canvas);
+  --us-tone-border: var(--us-border-strong);
+
+}
+
+[data-userscript-root] .us-tone-input {
+
+  --us-tone-fg: var(--us-fg);
+  --us-tone-bg: var(--us-surface-1);
+  --us-tone-border: var(--us-border-strong);
+
+}
+
+[data-userscript-root] .us-tone-accent {
+
+  --us-tone-fg: var(--us-accent);
+  --us-tone-bg: var(--us-accent-bg);
+  --us-tone-border: var(--us-accent-border);
+
+}
+
+[data-userscript-root] .us-tone-trace {
+
+  --us-tone-fg: var(--us-trace-fg);
+  --us-tone-bg: var(--us-trace-bg);
+  --us-tone-border: var(--us-trace-border);
+
+}
+
+[data-userscript-root] .us-tone-debug {
+
+  --us-tone-fg: var(--us-debug-fg);
+  --us-tone-bg: var(--us-debug-bg);
+  --us-tone-border: var(--us-debug-border);
+
+}
+
+[data-userscript-root] .us-tone-info {
+
+  --us-tone-fg: var(--us-info-fg);
+  --us-tone-bg: var(--us-info-bg);
+  --us-tone-border: var(--us-info-border);
+
+}
+
+[data-userscript-root] .us-tone-success {
+
+  --us-tone-fg: var(--us-success-fg);
+  --us-tone-bg: var(--us-success-bg);
+  --us-tone-border: var(--us-success-border);
+
+}
+
+[data-userscript-root] .us-tone-warning {
+
+  --us-tone-fg: var(--us-warning-fg);
+  --us-tone-bg: var(--us-warning-bg);
+  --us-tone-border: var(--us-warning-border);
+
+}
+
+[data-userscript-root] .us-tone-error {
+
+  --us-tone-fg: var(--us-danger-fg);
+  --us-tone-bg: var(--us-danger-bg);
+  --us-tone-border: var(--us-danger-border);
+
+}
+
+[data-userscript-root] .us-tone-critical {
+
+  --us-tone-fg: var(--us-critical-fg);
+  --us-tone-bg: var(--us-critical-bg);
+  --us-tone-border: var(--us-critical-border);
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ PILLS                                                                        │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: var(--us-pill-height);
+  padding: 1px
+    7px;
+  border: 1px solid
+    var(
+      --us-tone-border,
+      var(--us-border)
+    );
+  border-radius: var(--us-radius-pill);
+  background: var(
+      --us-tone-bg,
+      var(--us-surface-2)
+    );
+  color: var(
+      --us-tone-fg,
+      var(--us-fg-secondary)
+    );
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  padding-inline: 9px;
+
+}
+
+button.us-pill {
+
+  cursor: pointer;
+
+}
+
+[data-userscript-root] .us-pill-dot {
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background:
+    currentColor;
+
+  opacity: 0.9;
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ ALERTS                                                                       │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-alert {
+  display: grid;
+  grid-template-columns: auto
+    minmax(0, 1fr)
+    auto;
+  gap: var(--us-space-3);
+  align-items: start;
+  padding: var(--us-space-3)
+    var(--us-space-4);
+  border: 1px solid
+    var(
+      --us-tone-border,
+      var(--us-border)
+    );
+  border-radius: 0;
+  background: color-mix(
+      in srgb,
+      var(--us-tone-bg) 65%,
+      var(--us-surface-1)
+    );
+  color: var(
+      --us-tone-fg,
+      var(--us-fg-secondary)
+    );
+
+}
+
+[data-userscript-root] .us-alert-icon {
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 20px;
+  height: 20px;
+
+  margin-top: 1px;
+
+}
+
+[data-userscript-root] .us-alert-icon svg {
+
+  width: 15px;
+  height: 15px;
+
+}
+
+[data-userscript-root] .us-alert-content {
+
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  min-width: 0;
+
+}
+
+[data-userscript-root] .us-alert-title {
+  color: var(
+      --us-tone-fg,
+      var(--us-fg)
+    );
+  font-size: var(--us-font-size-sm);
+  font-weight: 700;
+  font-family: var(--us-font-meta);
+
+}
+
+[data-userscript-root] .us-alert-message {
+
+  color: var(--us-fg-secondary);
+
+  font-size: var(--us-font-size-xs);
+  line-height: 1.45;
+
+}
+
+[data-userscript-root] .us-alert-actions {
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--us-space-2);
+
+}
+
+[data-userscript-root] .us-alert-stack {
+
+  position: fixed;
+
+  top:
+    max(
+      12px,
+      env(safe-area-inset-top)
+    );
+  left: 50%;
+
+  z-index: var(--us-z-feedback);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--us-space-2);
+
+  width:
+    min(
+      560px,
+      calc(100vw - 24px)
+    );
+
+  transform:
+    translateX(-50%);
+
+  pointer-events: none;
+
+}
+
+[data-userscript-root] .us-alert-stack .us-alert {
+
+  pointer-events: auto;
+
+  box-shadow: var(--us-shadow-popover);
+
+}
+
+
+/*
+ * Toasts can use the same tone vocabulary.
+ */
+
+[data-userscript-root] .us-toast[class*="us-tone-"] {
+
+  border-color:
+    var(--us-tone-border);
+
+  background:
+    var(--us-tone-bg);
+
+}
+
+[data-userscript-root] .us-toast[class*="us-tone-"] .us-toast-title {
+
+  color:
+    var(--us-tone-fg);
+
+}
+
+
+/*
+ * Input validation/status tones.
+ */
+
+[data-userscript-root] .us-input[class*="us-tone-"],
+[data-userscript-root] .us-select[class*="us-tone-"],
+[data-userscript-root] .us-textarea[class*="us-tone-"],
+[data-userscript-root] .us-input-group[class*="us-tone-"] {
+
+  border-color:
+    var(--us-tone-border);
+
+}
+
+[data-userscript-root] .us-input[class*="us-tone-"]:focus,
+[data-userscript-root] .us-select[class*="us-tone-"]:focus,
+[data-userscript-root] .us-textarea[class*="us-tone-"]:focus {
+
+  box-shadow:
+    0 0 0 1px
+    var(--us-tone-border);
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐

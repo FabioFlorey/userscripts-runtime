@@ -1,0 +1,331 @@
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ DRAGGABLE WINDOWS / NOTEPAD                                                  │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-floating-window {
+
+  position: fixed;
+
+  z-index: var(--us-z-window);
+
+  display: flex;
+  flex-direction: column;
+
+  width:
+    min(
+      460px,
+      calc(100vw - 20px)
+    );
+
+  max-width:
+    calc(100vw - 20px);
+
+  max-height:
+    calc(100dvh - 20px);
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    var(--us-border-strong);
+
+  background: var(--us-shell);
+  color: var(--us-fg);
+
+  box-shadow:
+    5px
+    5px
+    0
+    var(--us-border);
+
+  pointer-events: auto;
+
+  outline: none;
+
+}
+
+[data-userscript-root] .us-floating-window:focus-visible {
+
+  border-color: var(--us-accent);
+
+}
+
+[data-userscript-root] .us-floating-window-header {
+
+  display: grid;
+
+  grid-template-columns:
+    24px
+    minmax(0, 1fr)
+    auto;
+
+  gap: var(--us-space-2);
+
+  align-items: center;
+
+  min-height: 40px;
+  padding:
+    2px
+    var(--us-space-2);
+
+  border-bottom:
+    1px solid
+    var(--us-border);
+
+  background: var(--us-shell);
+
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+
+}
+
+[data-userscript-root] .us-floating-window-dragging .us-floating-window-header {
+
+  cursor: grabbing;
+
+}
+
+[data-userscript-root] .us-floating-window-grip {
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+
+  color: var(--us-fg-muted);
+
+}
+
+[data-userscript-root] .us-floating-window-grip svg {
+
+  width: 16px;
+  height: 16px;
+
+}
+
+[data-userscript-root] .us-floating-window-title {
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  color: var(--us-fg);
+
+  font-family: var(--us-font-meta);
+  font-size: var(--us-font-size-sm);
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}
+
+[data-userscript-root] .us-floating-window-actions {
+
+  display: flex;
+  align-items: center;
+  gap: 2px;
+
+}
+
+[data-userscript-root] .us-floating-window-body {
+
+  display: flex;
+  flex-direction: column;
+
+  min-height: 0;
+  padding: var(--us-space-3);
+
+  overflow: auto;
+
+}
+
+[data-userscript-root] .us-floating-window-footer {
+
+  display: flex;
+  align-items: center;
+  gap: var(--us-space-2);
+
+  min-height: 40px;
+  padding:
+    var(--us-space-2)
+    var(--us-space-3);
+
+  border-top:
+    1px solid
+    var(--us-border);
+
+  background: var(--us-shell);
+
+}
+
+[data-userscript-root] .us-notepad-window {
+
+  min-width:
+    min(
+      320px,
+      calc(100vw - 20px)
+    );
+
+}
+
+[data-userscript-root] .us-notepad-textarea {
+
+  width: 100%;
+  min-height: 260px;
+
+  resize: none;
+
+  line-height: var(--us-reading-line-height);
+
+}
+
+[data-userscript-root] .us-notepad-status {
+
+  color: var(--us-fg-muted);
+
+  font-family: var(--us-font-meta);
+  font-size: 12.5px;
+
+}
+
+@media (max-width: 520px) {
+
+  [data-userscript-root] .us-floating-window {
+
+    width:
+      calc(
+        100vw
+        -
+        16px
+      ) !important;
+
+    max-width:
+      calc(
+        100vw
+        -
+        16px
+      );
+
+  }
+
+  [data-userscript-root] .us-notepad-textarea {
+
+    min-height: 220px;
+
+    resize: none;
+
+  }
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ FLOATING WINDOW STATE / RESIZE                                               │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-floating-window-resize {
+
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  width: 18px;
+  height: 18px;
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+  color: var(--us-fg-muted);
+
+  cursor: nwse-resize;
+  touch-action: none;
+
+}
+
+[data-userscript-root] .us-floating-window-resize::before,
+[data-userscript-root] .us-floating-window-resize::after {
+
+  content: '';
+
+  position: absolute;
+  right: 3px;
+  bottom: 4px;
+
+  width: 8px;
+  height: 1px;
+
+  background: currentColor;
+
+  transform: rotate(-45deg);
+  transform-origin: right center;
+
+}
+
+[data-userscript-root] .us-floating-window-resize::after {
+
+  right: 2px;
+  bottom: 8px;
+
+  width: 5px;
+
+}
+
+[data-userscript-root] .us-floating-window-resizing {
+
+  user-select: none;
+
+}
+
+[data-userscript-root] .us-floating-window-minimized {
+
+  height: auto !important;
+  min-height: 0;
+
+}
+
+[data-userscript-root] .us-floating-window-minimized .us-floating-window-body,
+[data-userscript-root] .us-floating-window-minimized .us-floating-window-footer,
+[data-userscript-root] .us-floating-window-minimized .us-floating-window-resize {
+
+  display: none;
+
+}
+
+[data-userscript-root] .us-floating-window-maximized {
+
+  max-width: none;
+  max-height: none;
+
+  box-shadow: none;
+
+}
+
+[data-userscript-root] .us-floating-window-maximized .us-floating-window-header {
+
+  cursor: default;
+
+}
+
+[data-userscript-root] .us-floating-window-maximized .us-floating-window-resize {
+
+  display: none;
+
+}
+
+@media (max-width: 520px) {
+
+  [data-userscript-root] .us-floating-window-resize {
+
+    display: none;
+
+  }
+
+}

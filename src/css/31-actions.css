@@ -1,0 +1,240 @@
+│ ACTION MENUS                                                                 │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-action-menu {
+
+  display: flex;
+  flex-direction: column;
+
+  min-width: 180px;
+
+  border:
+    1px solid
+    var(--us-border);
+
+  background: var(--us-surface-1);
+
+}
+
+[data-userscript-root] .us-action-menu-item {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  min-height: 38px;
+  padding: 5px 10px;
+  border: 0;
+  border-bottom: 1px solid
+    var(--us-border);
+  background: transparent;
+  color: var(--us-fg);
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+
+}
+
+[data-userscript-root] .us-action-menu-item:last-child {
+
+  border-bottom: 0;
+
+}
+
+[data-userscript-root] .us-action-menu-item:hover,
+[data-userscript-root] .us-action-menu-item:focus-visible {
+
+  background: var(--us-surface-hover);
+  color: var(--us-accent);
+
+}
+
+[data-userscript-root] .us-action-menu-item:focus-visible {
+
+  outline:
+    1px solid
+    var(--us-accent);
+
+  outline-offset: -1px;
+
+}
+
+[data-userscript-root] .us-action-menu-item:disabled {
+
+  cursor: default;
+
+  opacity: 0.45;
+
+}
+
+[data-userscript-root] .us-action-menu-item-danger {
+
+  color: var(--us-danger-fg);
+
+}
+
+[data-userscript-root] .us-action-menu-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 23px;
+  height: 23px;
+
+}
+
+[data-userscript-root] .us-action-menu-icon svg {
+  width: 18px;
+  height: 18px;
+
+}
+
+[data-userscript-root] .us-action-menu-label {
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  font-family: var(--us-font-sans);
+  font-size: var(--us-font-size-sm);
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}
+
+[data-userscript-root] .us-action-menu-hint {
+
+  color: var(--us-fg-muted);
+
+  font-family: var(--us-font-mono);
+  font-size: 10px;
+
+  white-space: nowrap;
+
+}
+
+
+/*
+ * Action-derived toast icon.
+ */
+
+[data-userscript-root] .us-toast-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex: 0
+    0
+    22px;
+  border: 1px solid
+    var(--us-tone-border, var(--us-border));
+  color: var(--us-tone-fg, var(--us-accent));
+  flex-basis: 28px;
+
+}
+
+[data-userscript-root] .us-toast-icon svg {
+  width: 18px;
+  height: 18px;
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ ACTION STRIPS                                                                │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-action-strip {
+
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+
+  padding: 2px;
+
+  border: 1px solid var(--us-border-subtle);
+  border-radius: var(--us-radius-sm);
+
+  background: var(--us-canvas);
+
+}
+
+[data-userscript-root] .us-action-button {
+
+  color: var(--us-fg-muted);
+
+}
+
+[data-userscript-root] .us-action-button:hover {
+
+  border-color: var(--us-border);
+
+  background: var(--us-surface-hover);
+  color: var(--us-fg);
+
+}
+
+[data-userscript-root] .us-action-button-danger:hover {
+
+  border-color: var(--us-danger-border);
+
+  background: var(--us-danger-bg);
+  color: var(--us-danger-fg);
+
+}
+
+[data-userscript-root] .us-command-action[data-copied="true"] {
+
+  border-color: var(--us-success-border);
+
+  background: var(--us-success-bg);
+  color: var(--us-success-fg);
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ COMMAND BLOCKS                                                               │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-command {
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto;
+
+  gap: var(--us-space-2);
+
+  align-items: start;
+
+  padding: var(--us-space-3);
+
+  border: 1px solid var(--us-border-subtle);
+  border-radius: var(--us-radius-sm);
+
+  background: #070a0c;
+
+}
+
+[data-userscript-root] .us-command-code {
+
+  min-width: 0;
+  overflow: auto;
+
+  color: #cbd5dc;
+
+  font-family: var(--us-font-mono);
+  font-size: var(--us-font-size-xs);
+  line-height: 1.6;
+
+  white-space: pre-wrap;
+  word-break: break-all;
+
+}

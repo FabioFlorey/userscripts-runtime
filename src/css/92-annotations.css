@@ -1,0 +1,414 @@
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ TEXT SELECTION / ANNOTATION                                                  │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-selection-toolbar-shell {
+
+  position: fixed;
+
+  z-index: var(--us-z-feedback);
+
+  width:
+    min(
+      660px,
+      calc(100vw - 16px)
+    );
+
+  pointer-events: auto;
+  container-type: inline-size;
+
+}
+
+[data-userscript-root] .us-selection-toolbar {
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--us-space-2);
+
+  width: 100%;
+  min-width: 0;
+  padding: var(--us-space-2);
+
+  border:
+    1px solid
+    var(--us-border-strong);
+
+  background: var(--us-shell);
+  color: var(--us-fg);
+
+  box-shadow:
+    4px
+    4px
+    0
+    var(--us-border);
+
+}
+
+[data-userscript-root] .us-selection-tools {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(74px, 1fr)
+    );
+
+  gap: 2px;
+
+  min-width: 0;
+
+}
+
+[data-userscript-root] .us-selection-tool {
+
+  display: grid;
+
+  grid-template-rows:
+    22px
+    minmax(1.4em, auto);
+
+  place-items: center;
+
+  gap: 5px;
+
+  min-width: 0;
+  min-height: 62px;
+  padding:
+    var(--us-space-2)
+    var(--us-space-1);
+
+  border:
+    1px solid
+    var(--us-border);
+
+  background: var(--us-canvas);
+  color: var(--us-fg-secondary);
+
+  cursor: pointer;
+
+  font-family: var(--us-font-meta);
+  font-size: var(--us-micro-size);
+  line-height: 1.15;
+
+  text-align: center;
+
+}
+
+[data-userscript-root] .us-selection-tool:hover,
+[data-userscript-root] .us-selection-tool:focus-visible {
+
+  border-color: var(--us-accent);
+
+  background: var(--us-accent-bg);
+  color: var(--us-accent);
+
+}
+
+[data-userscript-root] .us-selection-tool:focus-visible {
+
+  outline:
+    2px solid
+    var(--us-accent);
+
+  outline-offset: 1px;
+
+}
+
+[data-userscript-root] .us-selection-tool > svg {
+
+  width: 18px;
+  height: 18px;
+
+}
+
+[data-userscript-root] .us-selection-tool-label {
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}
+
+[data-userscript-root] .us-selection-tool-highlight {
+
+  box-shadow:
+    inset
+    0
+    -3px
+    0
+    var(
+      --us-selection-active-color,
+      var(--us-accent)
+    );
+
+}
+
+[data-userscript-root] .us-selection-color {
+
+  grid-template-rows:
+    22px
+    minmax(1.4em, auto);
+
+}
+
+[data-userscript-root] .us-selection-color-swatch {
+
+  display: block;
+
+  width: 22px;
+  height: 22px;
+
+  border:
+    1px solid
+    var(--us-border-strong);
+
+}
+
+[data-userscript-root] .us-selection-color-active {
+
+  border-color: var(--us-accent);
+
+  background: var(--us-accent-bg);
+
+  box-shadow:
+    inset
+    0
+    0
+    0
+    1px
+    var(--us-accent);
+
+}
+
+[data-userscript-root] .us-selection-note-composer {
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto;
+
+  gap: var(--us-space-2);
+
+  align-items: end;
+
+  padding-top: var(--us-space-2);
+
+  border-top:
+    1px solid
+    var(--us-border);
+
+}
+
+[data-userscript-root] .us-selection-note-composer[hidden] {
+
+  display: none;
+
+}
+
+[data-userscript-root] .us-selection-note-input {
+
+  min-height: 76px;
+
+  resize: vertical;
+
+}
+
+[data-userscript-root] .us-selection-note-actions {
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--us-space-1);
+
+}
+
+@container (max-width: 500px) {
+
+  [data-userscript-root] .us-selection-tools {
+
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(0, 1fr)
+      );
+
+  }
+
+  [data-userscript-root] .us-selection-note-composer {
+
+    grid-template-columns:
+      minmax(0, 1fr);
+
+  }
+
+  [data-userscript-root] .us-selection-note-actions {
+
+    flex-direction: row;
+    justify-content: flex-end;
+
+  }
+
+}
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ PAGE ANNOTATION MODE                                                        │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-annotation-mode-floating.us-annotation-mode-active {
+
+  border-color: var(--us-accent);
+  background: var(--us-accent-bg);
+  color: var(--us-accent);
+
+  box-shadow:
+    4px
+    4px
+    0
+    var(--us-accent);
+
+}
+
+[data-userscript-root] .us-annotation-mode-bar {
+
+  position: fixed;
+  left: 0;
+  right: 0;
+
+  z-index: var(--us-z-feedback);
+
+  display: grid;
+  grid-template-columns:
+    auto
+    minmax(0, 1fr)
+    auto;
+
+  align-items: center;
+  gap: var(--us-space-3);
+
+  min-height: var(--us-chrome-height);
+  padding:
+    var(--us-space-2)
+    var(--us-space-4);
+
+  border-color: var(--us-border-strong);
+
+  background: var(--us-shell);
+  color: var(--us-fg);
+
+  box-shadow:
+    0
+    3px
+    0
+    var(--us-border-subtle);
+
+  pointer-events: auto;
+
+}
+
+[data-userscript-root] .us-annotation-mode-bar-top {
+
+  top: 0;
+
+  border-bottom:
+    1px solid
+    var(--us-border-strong);
+
+}
+
+[data-userscript-root] .us-annotation-mode-bar-bottom {
+
+  bottom: 0;
+
+  border-top:
+    1px solid
+    var(--us-border-strong);
+
+  box-shadow:
+    0
+    -3px
+    0
+    var(--us-border-subtle);
+
+}
+
+[data-userscript-root] .us-annotation-mode-bar.us-annotation-mode-active {
+
+  border-color: var(--us-accent-border);
+
+}
+
+[data-userscript-root] .us-annotation-mode-identity {
+
+  display: flex;
+  align-items: center;
+  gap: var(--us-space-2);
+
+  min-width: 0;
+
+}
+
+[data-userscript-root] .us-annotation-mode-identity > svg {
+
+  width: var(--us-action-icon-size);
+  height: var(--us-action-icon-size);
+
+  color: var(--us-accent);
+
+}
+
+[data-userscript-root] .us-annotation-mode-title {
+
+  font-family: var(--us-font-meta);
+  font-size: var(--us-font-size-sm);
+  font-weight: 600;
+
+  white-space: nowrap;
+
+}
+
+[data-userscript-root] .us-annotation-mode-help {
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  color: var(--us-fg-muted);
+
+  font-size: var(--us-font-size-xs);
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}
+
+[data-userscript-root] .us-annotation-mode-toggle {
+
+  justify-self: end;
+
+}
+
+@media (max-width: 560px) {
+
+  [data-userscript-root] .us-annotation-mode-bar {
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      auto;
+
+  }
+
+  [data-userscript-root] .us-annotation-mode-help {
+
+    display: none;
+
+  }
+
+}

@@ -1,0 +1,798 @@
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ USERSCRIPT BASE STYLES                                                       │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+/*
+ * Shared visual foundation for userscripts in this repository.
+ *
+ * The visual system follows fabioflorey.com: flat browser tooling, compact
+ * chrome, hard borders, Pixelify display text and restrained interaction.
+ *
+ * Structural styles live here; explicit dark/light overrides live in
+ * styles/themes/. The base token values remain dark as a compatibility fallback.
+ *
+ * Every rule is scoped under [data-userscript-root] so this stylesheet can be
+ * injected into third-party pages without becoming a global reset.
+ */
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ DESIGN TOKENS                                                                │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] {
+
+  /*
+   * Typography
+   *
+   * Atkinson Hyperlegible is the body/UI default for character distinction and
+   * low-vision-oriented legibility. Pixelify Sans carries titles and compact chrome.
+   * Press Start 2P is reserved for tiny terminal indexes only.
+   */
+
+  --us-font-sans:
+    "Atkinson Hyperlegible",
+    Arial,
+    Verdana,
+    sans-serif;
+
+  --us-font-mono:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    Menlo,
+    monospace;
+
+  --us-font-meta:
+    "Pixelify Sans",
+    Arial,
+    sans-serif;
+
+  --us-font-display:
+    "Pixelify Sans",
+    Arial,
+    sans-serif;
+
+  --us-font-pixel:
+    "Press Start 2P",
+    ui-monospace,
+    monospace;
+
+  --us-font-size-xs: 14px;
+  --us-font-size-sm: 15px;
+  --us-font-size: 17.5px;
+  --us-font-size-lg: 20px;
+  --us-font-size-xl: 25px;
+
+  --us-line-height: 1.55;
+
+  --us-reading-line-height: 1.6;
+  --us-reading-line-length: 70ch;
+
+
+  /*
+   * Spacing
+   */
+
+  --us-space-1: 5px;
+  --us-space-2: 7.5px;
+  --us-space-3: 12.5px;
+  --us-space-4: 15px;
+  --us-space-5: 20px;
+  --us-space-6: 25px;
+  --us-space-7: 30px;
+  --us-space-8: 40px;
+
+
+  /*
+   * Shape
+   */
+
+  --us-radius-xs: 0;
+  --us-radius-sm: 0;
+  --us-radius-md: 0;
+  --us-radius-lg: 0;
+  --us-radius-pill: 999px;
+
+
+  /*
+   * Shell dimensions
+   */
+
+  --us-header-height: 35px;
+  --us-footer-height: 30px;
+  --us-left-width: 275px;
+  --us-right-width: 275px;
+
+  --us-control-height: 38px;
+  --us-control-height-xs: 30px;
+  --us-action-size: 35px;
+  --us-action-icon-size: 17.5px;
+  --us-input-height: 43px;
+  --us-input-height-xs: 35px;
+  --us-chrome-height: 35px;
+  --us-floating-size: 40px;
+  --us-drawer-width: 275px;
+  --us-switch-width: 40px;
+  --us-switch-height: 20px;
+  --us-switch-thumb-size: 12.5px;
+  --us-switch-thumb-shift: 20px;
+  --us-pill-height: 25px;
+  --us-micro-size: 12.5px;
+  --us-file-icon-size: 40px;
+  --us-asset-card-min: 140px;
+  --us-progress-height: 13px;
+  --us-progress-compact-height: 8px;
+
+
+  /*
+   * Overlay layers
+   */
+
+  --us-z-sticky: 10;
+  --us-z-overlay: 2147483000;
+  --us-z-utility: 2147483200;
+  --us-z-asset: 2147483320;
+  --us-z-pin: 2147483330;
+  --us-z-feedback: 2147483400;
+  --us-z-window: 2147483450;
+  --us-z-modal: 2147483500;
+
+
+  /*
+   * Surfaces
+   *
+   * The hierarchy is intentionally narrow. Depth should come from one or two
+   * lightness steps and borders, not glass effects or large shadows.
+   */
+
+  --us-canvas: #111111;
+  --us-shell: #111111;
+  --us-surface-1: #111111;
+  --us-surface-2: #161616;
+  --us-surface-3: #1c1c1c;
+  --us-surface-hover: #191919;
+  --us-surface-active: #202020;
+  --us-surface-selected: #21151b;
+
+
+  /*
+   * Foreground hierarchy
+   */
+
+  --us-fg: #f5f5f5;
+  --us-fg-secondary: #d0d0d0;
+  --us-fg-muted: #999999;
+  --us-fg-disabled: #666666;
+  --us-fg-inverse: #111111;
+
+
+  /*
+   * Borders
+   */
+
+  --us-border-subtle: #222222;
+  --us-border: #2a2a2a;
+  --us-border-strong: #444444;
+
+
+  /*
+   * Accent
+   *
+   * The dark theme uses the site pink accent; the light theme uses the site blue.
+   * Accent remains interaction-focused rather than becoming the default text.
+   */
+
+  --us-accent: #ff5ca8;
+  --us-accent-hover: #ff79b7;
+  --us-accent-active: #e94f99;
+
+  --us-accent-bg: #24151c;
+  --us-accent-bg-hover: #301922;
+  --us-accent-border: #7b3455;
+
+
+  /*
+   * Semantic states
+   *
+   * Trace/debug are deliberately quieter than info; critical is stronger than
+   * ordinary error. These tokens are shared by pills, alerts, toasts and form
+   * validation so the runtime has one consistent log-level vocabulary.
+   */
+
+  --us-trace-fg: #8c98a1;
+  --us-trace-bg: #12171b;
+  --us-trace-border: #313b43;
+
+  --us-debug-fg: #b19bd4;
+  --us-debug-bg: #1c1725;
+  --us-debug-border: #514267;
+
+  --us-info-fg: #75a9d6;
+  --us-info-bg: #111d27;
+  --us-info-border: #2c536e;
+
+  --us-success-fg: #69c58e;
+  --us-success-bg: #122219;
+  --us-success-border: #2f6846;
+
+  --us-warning-fg: #d8aa5f;
+  --us-warning-bg: #261f13;
+  --us-warning-border: #67522d;
+
+  --us-danger-fg: #de787d;
+  --us-danger-bg: #281617;
+  --us-danger-border: #704043;
+
+  --us-critical-fg: #ff9aa1;
+  --us-critical-bg: #351619;
+  --us-critical-border: #a44d54;
+
+
+  /*
+   * Shadows
+   *
+   * Ordinary panels are flat. Only popovers, dialogs and detached surfaces use
+   * shadows so floating state remains visually meaningful.
+   */
+
+  --us-shadow-popover:
+    3px 3px 0 var(--us-border);
+
+  --us-shadow-dialog:
+    5px 5px 0 var(--us-border-strong);
+
+
+  /*
+   * Compatibility aliases
+   */
+
+  --us-bg: var(--us-surface-1);
+  --us-bg-elevated: var(--us-surface-2);
+  --us-bg-hover: var(--us-surface-hover);
+  --us-danger: var(--us-danger-fg);
+  --us-shadow: var(--us-shadow-dialog);
+
+
+  /*
+   * Native controls should render in a dark environment.
+   */
+
+  color-scheme: dark;
+
+  font-family: var(--us-font-sans);
+  font-size: var(--us-font-size);
+  line-height: var(--us-line-height);
+
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+
+  color: var(--us-fg);
+
+  scrollbar-color:
+    var(--us-border-strong)
+    var(--us-shell);
+
+  scrollbar-width: thin;
+  letter-spacing: 0;
+
+}
+
+
+
+/*
+ * Component scale presets. 125 is the runtime default; the presets override both
+ * typography/spacing tokens and fixed control metrics so scaling remains coherent.
+ */
+[data-userscript-root][data-us-scale="100"] {
+  --us-font-size-xs: 11px;
+  --us-font-size-sm: 12px;
+  --us-font-size: 14px;
+  --us-font-size-lg: 16px;
+  --us-font-size-xl: 20px;
+  --us-space-1: 4px;
+  --us-space-2: 6px;
+  --us-space-3: 10px;
+  --us-space-4: 12px;
+  --us-space-5: 16px;
+  --us-space-6: 20px;
+  --us-space-7: 24px;
+  --us-space-8: 32px;
+  --us-header-height: 28px;
+  --us-footer-height: 24px;
+  --us-left-width: 220px;
+  --us-right-width: 220px;
+  --us-control-height: 30px;
+  --us-control-height-xs: 24px;
+  --us-action-size: 28px;
+  --us-action-icon-size: 14px;
+  --us-input-height: 34px;
+  --us-input-height-xs: 28px;
+  --us-chrome-height: 28px;
+  --us-floating-size: 32px;
+  --us-drawer-width: 220px;
+  --us-switch-width: 32px;
+  --us-switch-height: 16px;
+  --us-switch-thumb-size: 10px;
+  --us-switch-thumb-shift: 16px;
+  --us-pill-height: 20px;
+  --us-micro-size: 10px;
+  --us-file-icon-size: 32px;
+  --us-asset-card-min: 112px;
+  --us-progress-height: 10px;
+  --us-progress-compact-height: 6px;
+}
+
+[data-userscript-root][data-us-scale="150"] {
+  --us-font-size-xs: 17px;
+  --us-font-size-sm: 18px;
+  --us-font-size: 21px;
+  --us-font-size-lg: 24px;
+  --us-font-size-xl: 30px;
+  --us-space-1: 6px;
+  --us-space-2: 9px;
+  --us-space-3: 15px;
+  --us-space-4: 18px;
+  --us-space-5: 24px;
+  --us-space-6: 30px;
+  --us-space-7: 36px;
+  --us-space-8: 48px;
+  --us-header-height: 42px;
+  --us-footer-height: 36px;
+  --us-left-width: 330px;
+  --us-right-width: 330px;
+  --us-control-height: 46px;
+  --us-control-height-xs: 36px;
+  --us-action-size: 42px;
+  --us-action-icon-size: 21px;
+  --us-input-height: 52px;
+  --us-input-height-xs: 42px;
+  --us-chrome-height: 42px;
+  --us-floating-size: 48px;
+  --us-drawer-width: 330px;
+  --us-switch-width: 48px;
+  --us-switch-height: 24px;
+  --us-switch-thumb-size: 15px;
+  --us-switch-thumb-shift: 24px;
+  --us-pill-height: 30px;
+  --us-micro-size: 15px;
+  --us-file-icon-size: 48px;
+  --us-asset-card-min: 168px;
+  --us-progress-height: 16px;
+  --us-progress-compact-height: 10px;
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ USER PREFERENCES                                                             │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+/*
+ * Readability preferences. The default is Atkinson Hyperlegible with Arial and
+ * Verdana fallbacks. Consumers can choose a familiar system font without
+ * rebuilding components.
+ */
+
+[data-userscript-root][data-us-font="arial"] {
+
+  --us-font-sans:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+}
+
+[data-userscript-root][data-us-font="system"] {
+
+  --us-font-sans:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+}
+
+[data-userscript-root][data-us-reading="relaxed"] {
+
+  --us-line-height: 1.7;
+  --us-reading-line-height: 1.75;
+
+}
+
+[data-userscript-root][data-us-reading="relaxed"] .us-readable-text p {
+
+  margin-bottom: 1.25em;
+
+}
+
+[data-userscript-root][data-us-reading="relaxed"] .us-alert-message,
+[data-userscript-root][data-us-reading="relaxed"] .us-setting-description,
+[data-userscript-root][data-us-reading="relaxed"] .us-page-description {
+
+  line-height: 1.7;
+
+}
+
+
+[data-userscript-root] .us-readable-text {
+
+  max-width: var(--us-reading-line-length);
+
+  line-height: var(--us-reading-line-height);
+
+}
+
+[data-userscript-root] .us-readable-text p {
+
+  margin:
+    0
+    0
+    1em;
+
+}
+
+[data-userscript-root] .us-readable-text p:last-child {
+
+  margin-bottom: 0;
+
+}
+
+
+/*
+ * These attributes can be changed at runtime by a settings popover without
+ * rebuilding components.
+ */
+
+[data-userscript-root][data-us-density="compact"] {
+
+  --us-space-2: 5px;
+  --us-space-3: 7.5px;
+  --us-space-4: 11.25px;
+
+}
+
+[data-userscript-root][data-us-density="compact"] .us-button {
+
+  min-height: 27px;
+
+}
+
+[data-userscript-root][data-us-density="compact"] .us-setting-row {
+
+  min-height: 46px;
+
+}
+
+[data-userscript-root][data-us-motion="off"],
+[data-userscript-root][data-us-motion="off"] * {
+
+  scroll-behavior: auto !important;
+
+  animation: none !important;
+  transition: none !important;
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ TERMINAL / FABIO-INSPIRED UTILITY DETAILS                                    │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+/*
+ * These utilities borrow interaction ideas from the personal site:
+ * terse terminal labels, numbered navigation, flat geometry and offset feedback.
+ * They remain target-independent and use the runtime's own semantic palette.
+ */
+
+[data-userscript-root] .us-terminal-label {
+
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  min-width: 0;
+
+  color: var(--us-fg-secondary);
+
+  font-family: var(--us-font-mono);
+  font-size: var(--us-font-size-xs);
+  font-weight: 600;
+
+  white-space: nowrap;
+
+}
+
+[data-userscript-root] .us-terminal-label::before {
+
+  content: '>';
+
+  color: var(--us-accent);
+
+  font-weight: 700;
+
+}
+
+[data-userscript-root] .us-terminal-label-cursor::after {
+
+  content: '_';
+
+  margin-left: 1px;
+
+  color: var(--us-fg);
+
+  animation:
+    us-terminal-blink
+    1s
+    step-end
+    infinite;
+
+}
+
+@keyframes us-terminal-blink {
+
+  0%,
+  50% {
+
+    opacity: 1;
+
+  }
+
+  51%,
+  100% {
+
+    opacity: 0;
+
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  [data-userscript-root] .us-terminal-label-cursor::after {
+
+    animation: none;
+
+  }
+
+}
+
+
+/*
+ * Offset cards provide strong tactile feedback without gradients or glow.
+ */
+
+[data-userscript-root] .us-offset-card {
+
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr);
+
+  gap: var(--us-space-3);
+
+  align-items: start;
+
+  width: 100%;
+  padding:
+    var(--us-space-3)
+    var(--us-space-4);
+
+  border:
+    1px solid
+    var(--us-border-strong);
+
+  border-radius: 0;
+
+  background: var(--us-surface-1);
+  color: var(--us-fg);
+
+  box-shadow:
+    3px
+    3px
+    0
+    var(--us-border-subtle);
+
+  font:
+    inherit;
+
+  text-align: left;
+  text-decoration: none;
+
+  transition:
+    transform 100ms linear,
+    box-shadow 100ms linear,
+    border-color 100ms linear,
+    background 100ms linear;
+
+}
+
+[data-userscript-root] .us-offset-card-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid
+    var(--us-border);
+  color: var(--us-accent);
+
+}
+
+[data-userscript-root] .us-offset-card-icon svg {
+  width: 20px;
+  height: 20px;
+
+}
+
+[data-userscript-root] .us-offset-card-interactive {
+
+  cursor: pointer;
+
+}
+
+[data-userscript-root] .us-offset-card-interactive:hover,
+[data-userscript-root] .us-offset-card-interactive:focus-visible {
+
+  border-color: var(--us-accent-border);
+
+  background:
+    color-mix(
+      in srgb,
+      var(--us-accent-bg) 35%,
+      var(--us-surface-1)
+    );
+
+  box-shadow:
+    5px
+    5px
+    0
+    var(--us-accent-border);
+
+  transform:
+    translate(
+      -2px,
+      -2px
+    );
+
+}
+
+
+/*
+ * External-link cue used by link-like controls and metadata.
+ */
+
+[data-userscript-root] .us-external-cue::after {
+
+  content: '↗';
+
+  display: inline-block;
+
+  margin-left: 0.25em;
+
+  opacity: 0.55;
+
+  transition:
+    opacity 120ms linear,
+    transform 120ms linear;
+
+}
+
+[data-userscript-root] .us-external-cue:hover::after,
+[data-userscript-root] .us-external-cue:focus-visible::after {
+
+  opacity: 1;
+
+  transform:
+    translate(
+      2px,
+      -2px
+    );
+
+}
+
+
+/*
+ * Compact metadata line: intentionally small, mono and quiet.
+ */
+
+[data-userscript-root] .us-meta-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px
+    10px;
+  color: var(--us-fg-muted);
+  font-family: var(--us-font-mono);
+  font-size: var(--us-micro-size);
+  line-height: 1.35;
+  min-width: 0;
+  row-gap: var(--us-space-1);
+  column-gap: var(--us-space-3);
+
+}
+
+[data-userscript-root] .us-meta-line > * + *::before {
+
+  content: '·';
+
+  margin-right: 10px;
+
+  color: var(--us-border-strong);
+
+}
+
+
+/*
+ * Flat compact chrome is useful for injected bars and drawers.
+ */
+
+[data-userscript-root] .us-chrome-strip {
+
+  display: flex;
+  align-items: center;
+  gap: var(--us-space-2);
+  min-height: var(--us-chrome-height);
+  padding: 0 var(--us-space-3);
+
+  border:
+    1px solid
+    var(--us-border);
+  border-radius: 0;
+  background: var(--us-shell);
+  color: var(--us-fg-secondary);
+  border-color: var(--us-border);
+}
+
+
+/*
+ * Optional subtle texture for detached tools only. It is deliberately scoped
+ * and never applied to the host page.
+ */
+
+[data-userscript-root][data-us-texture="grain"] .us-drawer,
+[data-userscript-root][data-us-texture="grain"] .us-popover,
+[data-userscript-root][data-us-texture="grain"] .us-modal,
+[data-userscript-root][data-us-texture="grain"] .us-utility-bar {
+
+  background-image:
+    radial-gradient(
+      circle at 25% 25%,
+      color-mix(
+        in srgb,
+        var(--us-fg) 3%,
+        transparent
+      )
+      0.5px,
+      transparent 0.7px
+    );
+
+  background-size:
+    6px
+    6px;
+
+}
+
+
+/*
+ * Keep compact detached surfaces stable when their scrollbars appear.
+ */
+
+[data-userscript-root] .us-drawer-body,
+[data-userscript-root] .us-popover,
+[data-userscript-root] .us-modal {
+
+  scrollbar-gutter: stable;
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐

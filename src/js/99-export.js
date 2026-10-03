@@ -1,0 +1,156 @@
+  /*
+  ┌──────────────────────────────────────────────────────────────────────────────┐
+  │ EXPORT                                                                       │
+  └──────────────────────────────────────────────────────────────────────────────┘
+  */
+
+  const api = Object.freeze({
+
+    API_VERSION,
+    LOW_LEVEL_APIS,
+    EXPERIMENTAL_APIS,
+    DEPRECATED_APIS,
+
+    ICONS,
+    ACTIONS,
+    TONE_CLASSES,
+
+    element,
+    icon,
+    focusableElements,
+    focusInitial,
+    trapFocus,
+
+    button,
+    iconButton,
+    action,
+    resolveAction,
+    actionButton,
+    actionMenuItem,
+    actionMenu,
+    toneClass,
+    pill,
+    alertBox,
+    showAlert,
+    openAlertDialog,
+    badge,
+    status,
+    callout,
+    divider,
+    toolbar,
+    stack,
+    cluster,
+    field,
+    inputControl,
+    textareaControl,
+    selectControl,
+    choiceControl,
+    checkboxControl,
+    radioControl,
+    radioGroup,
+    inputGroup,
+    utilityGroup,
+    utilityBar,
+    rangeControl,
+    switchControl,
+    segmentedControl,
+    settingRow,
+    settingsGroup,
+
+    panel,
+    pageHeader,
+
+    metricStrip,
+    keyValueList,
+    dataTable,
+    tabs,
+    logList,
+
+    actionStrip,
+
+    copyText,
+    shellQuote,
+    copyCommandButton,
+    commandBlock,
+
+    formatBytes,
+    fileMatchesAccept,
+    progressBar,
+    progressGroup,
+    segmentedProgress,
+    spinner,
+    skeleton,
+    filePicker,
+    uploadQueue,
+    DEFAULT_HIGHLIGHT_COLORS,
+    textNodesInRange,
+    annotateTextRange,
+    clearTextAnnotations,
+    createTextQuoteAnchor,
+    resolveTextQuoteAnchor,
+    textSelectionToolbar,
+    attachTextSelectionToolbar,
+    annotationModeControl,
+    attachPageAnnotationMode,
+    assetItem,
+    assetTray,
+    assetCarousel,
+    openAssetCarousel,
+    attachAssetHoverTray,
+
+    mediaProgress,
+    qualitySelect,
+    mediaSource,
+    mediaControls,
+    sourceInspector,
+
+    createRoot,
+    setTheme,
+    ensureOverlayRoot,
+    positionFloating,
+    floatingAction,
+    hoverToolbar,
+    attachHoverToolbar,
+    popover,
+    attachPopover,
+    storageAdapter,
+    draggableWindow,
+    openDraggableWindow,
+    openNotepad,
+    modal,
+    openModal,
+    drawer,
+    openDrawer,
+    toast,
+    showActionToast,
+    showToast,
+    tooltip,
+    attachTooltip,
+    inlineRoot,
+    inlineInspector,
+    toolNav,
+    terminalLabel,
+    metaLine,
+    chromeStrip,
+    offsetCard,
+
+    header,
+    sidebarSection,
+    sidebar,
+    footer,
+    appShell
+
+  });
+
+  Object.defineProperty(
+    global,
+    NAMESPACE,
+    {
+      value: api,
+      configurable: false,
+      enumerable: true,
+      writable: false
+    }
+  );
+
+})(globalThis);

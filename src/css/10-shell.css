@@ -1,0 +1,460 @@
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ APPLICATION SHELL                                                            │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+/*
+ * The shell is optimized for desktop, data-dense tooling: persistent global
+ * navigation, a central workspace and a contextual inspector rail.
+ */
+
+[data-userscript-root].us-app {
+
+  display: grid;
+
+  grid-template-areas:
+    "header header header"
+    "left main right"
+    "footer footer footer";
+
+  grid-template-columns:
+    var(--us-left-width)
+    minmax(0, 1fr)
+    var(--us-right-width);
+
+  grid-template-rows:
+    var(--us-header-height)
+    minmax(0, 1fr)
+    var(--us-footer-height);
+
+  width: 100%;
+  min-height: 100vh;
+
+  background: var(--us-canvas);
+  color: var(--us-fg);
+
+}
+
+[data-userscript-root] .us-app-header {
+
+  grid-area: header;
+
+}
+
+[data-userscript-root] .us-app-left {
+
+  grid-area: left;
+
+}
+
+[data-userscript-root] .us-app-main {
+
+  grid-area: main;
+
+  min-width: 0;
+  min-height: 0;
+
+  overflow: auto;
+
+  padding: var(--us-space-5);
+
+  background: var(--us-canvas);
+
+}
+
+[data-userscript-root] .us-app-right {
+
+  grid-area: right;
+
+}
+
+[data-userscript-root] .us-app-footer {
+
+  grid-area: footer;
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ HEADER                                                                       │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-header {
+
+  display: flex;
+  align-items: center;
+  gap: var(--us-space-4);
+
+  height: var(--us-header-height);
+  padding:
+    0
+    var(--us-space-4);
+
+  border-bottom: 1px solid var(--us-border);
+
+  background: var(--us-shell);
+
+}
+
+[data-userscript-root] .us-header-brand {
+
+  display: flex;
+  align-items: center;
+  gap: var(--us-space-3);
+
+  min-width: 0;
+
+}
+
+[data-userscript-root] .us-header-mark {
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 28px;
+  height: 28px;
+
+  border: 1px solid var(--us-accent-border);
+  border-radius: var(--us-radius-sm);
+
+  background: var(--us-accent-bg);
+  color: var(--us-accent);
+
+  font-family: var(--us-font-mono);
+  font-size: var(--us-font-size-xs);
+  font-weight: 700;
+
+}
+
+[data-userscript-root] .us-header-title {
+
+  color: var(--us-fg);
+
+  font-size: var(--us-font-size);
+  font-weight: 600;
+
+  white-space: nowrap;
+
+}
+
+[data-userscript-root] .us-header-context {
+
+  color: var(--us-fg-muted);
+
+  font-family: var(--us-font-mono);
+  font-size: var(--us-font-size-xs);
+
+  white-space: nowrap;
+
+}
+
+[data-userscript-root] .us-header-search {
+
+  display: flex;
+  align-items: center;
+  gap: var(--us-space-2);
+
+  width: min(360px, 28vw);
+  min-height: 30px;
+  padding:
+    0
+    var(--us-space-3);
+
+  border: 1px solid var(--us-border);
+  border-radius: var(--us-radius-sm);
+
+  background: var(--us-canvas);
+  color: var(--us-fg-muted);
+
+}
+
+[data-userscript-root] .us-header-search svg {
+
+  width: 14px;
+  height: 14px;
+  min-width: 14px;
+
+  color: var(--us-fg-muted);
+
+}
+
+[data-userscript-root] .us-header-search input {
+
+  width: 100%;
+  min-width: 0;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+  color: var(--us-fg-secondary);
+
+  font: inherit;
+
+}
+
+[data-userscript-root] .us-header-search input::placeholder {
+
+  color: var(--us-fg-muted);
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ SIDEBARS                                                                     │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-sidebar {
+
+  min-width: 0;
+  min-height: 0;
+
+  overflow: auto;
+
+  background: var(--us-shell);
+
+}
+
+[data-userscript-root] .us-sidebar-left {
+
+  border-right: 1px solid var(--us-border);
+
+}
+
+[data-userscript-root] .us-sidebar-right {
+
+  border-left: 1px solid var(--us-border);
+
+}
+
+[data-userscript-root] .us-sidebar-inner {
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--us-space-5);
+
+  padding:
+    var(--us-space-4)
+    var(--us-space-3);
+
+}
+
+[data-userscript-root] .us-sidebar-section {
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--us-space-2);
+
+}
+
+[data-userscript-root] .us-sidebar-title {
+
+  padding:
+    0
+    var(--us-space-2);
+
+  color: var(--us-fg-muted);
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+}
+
+[data-userscript-root] .us-side-nav {
+
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+
+}
+
+[data-userscript-root] .us-side-nav-link {
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: var(--us-space-3);
+
+  min-height: 32px;
+  padding:
+    0
+    var(--us-space-3);
+
+  border: 1px solid transparent;
+  border-radius: var(--us-radius-sm);
+
+  background: transparent;
+  color: var(--us-fg-muted);
+
+  text-decoration: none;
+
+  cursor: pointer;
+  user-select: none;
+
+}
+
+[data-userscript-root] .us-side-nav-link:hover {
+
+  background: var(--us-surface-1);
+  color: var(--us-fg-secondary);
+
+}
+
+[data-userscript-root] .us-side-nav-link-active {
+
+  border-color: var(--us-accent-border);
+
+  background: var(--us-accent-bg);
+  color: var(--us-accent);
+
+}
+
+[data-userscript-root] .us-side-nav-link-active::before {
+
+  content: '';
+
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 0;
+
+  width: 2px;
+
+  border-radius:
+    0
+    var(--us-radius-pill)
+    var(--us-radius-pill)
+    0;
+
+  background: var(--us-accent);
+
+}
+
+[data-userscript-root] .us-side-nav-icon {
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 15px;
+  min-width: 15px;
+
+  color: inherit;
+
+}
+
+[data-userscript-root] .us-side-nav-icon svg {
+
+  width: 14px;
+  height: 14px;
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ FOOTER / STATUS BAR                                                          │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-footer {
+
+  display: flex;
+  align-items: center;
+  gap: var(--us-space-3);
+
+  height: var(--us-footer-height);
+  padding:
+    0
+    var(--us-space-3);
+
+  border-top: 1px solid var(--us-border);
+
+  background: var(--us-shell);
+  color: var(--us-fg-muted);
+
+  font-size: var(--us-font-size-xs);
+
+}
+
+[data-userscript-root] .us-footer a {
+
+  color: var(--us-fg-secondary);
+  text-decoration: none;
+
+}
+
+[data-userscript-root] .us-footer a:hover {
+
+  color: var(--us-accent);
+
+}
+
+
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ PAGE HEADER                                                                  │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-page-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--us-space-5);
+  margin-bottom: var(--us-space-8);
+  padding-bottom: var(--us-space-7);
+  border-bottom: 1px solid var(--us-border);
+
+}
+
+[data-userscript-root] .us-page-header-main {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: var(--us-space-2);
+  min-width: 0;
+
+}
+
+[data-userscript-root] .us-page-kicker {
+
+  color: var(--us-fg-muted);
+
+  font-size: var(--us-font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+}
+
+[data-userscript-root] .us-page-title {
+  color: var(--us-fg);
+  font-size: clamp(15px, 2.2vw, 22px);
+  font-weight: 400;
+  margin: 0;
+  font-family: var(--us-font-display);
+  line-height: 1.55;
+
+}
+
+[data-userscript-root] .us-page-description {
+  max-width: 42rem;
+  color: var(--us-fg-muted);
+  font-size: var(--us-font-size);
+  line-height: 1.7;
+
+}

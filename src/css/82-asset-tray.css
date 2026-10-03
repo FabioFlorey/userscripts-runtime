@@ -1,0 +1,381 @@
+│ ASSET TRAY                                                                   │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-asset-hover {
+  position: fixed;
+  z-index: var(--us-z-asset);
+  width: min(525px, calc(100vw - 20px));
+  max-height: min(650px, calc(100dvh - 20px));
+  overflow: visible;
+  border: 1px solid
+    var(--us-border);
+  background: var(--us-shell);
+  box-shadow: var(--us-shadow-popover);
+  scrollbar-gutter: stable;
+
+}
+
+[data-userscript-root] .us-asset-tray {
+
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+
+  background: var(--us-shell);
+
+}
+
+[data-userscript-root] .us-asset-tray-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--us-space-3);
+  min-height: 38px;
+  padding: var(--us-space-2)
+    var(--us-space-3);
+  border-bottom: 1px solid
+    var(--us-border);
+  background: var(--us-shell);
+
+}
+
+[data-userscript-root] .us-asset-tray-title,
+[data-userscript-root] .us-asset-tray-actions {
+
+  display: flex;
+  align-items: center;
+  gap: var(--us-space-2);
+
+  min-width: 0;
+
+}
+
+[data-userscript-root] .us-asset-tray-title > svg {
+
+  width: 14px;
+  height: 14px;
+
+  flex:
+    0
+    0
+    14px;
+
+  color: var(--us-accent);
+
+}
+
+[data-userscript-root] .us-asset-tray-title > span:not(.us-pill) {
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  font-family: var(--us-font-meta);
+  font-size: var(--us-font-size-sm);
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}
+
+[data-userscript-root] .us-asset-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1px;
+  min-width: 0;
+  background: var(--us-border);
+
+}
+
+[data-userscript-root] .us-asset-item {
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+
+  background: var(--us-surface-1);
+
+}
+
+[data-userscript-root] .us-asset-preview {
+
+  position: relative;
+
+  aspect-ratio:
+    1
+    /
+    1;
+
+  overflow: hidden;
+
+  background: var(--us-canvas);
+
+}
+
+[data-userscript-root] .us-asset-preview-image,
+[data-userscript-root] .us-asset-preview-video {
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+}
+
+[data-userscript-root] .us-asset-preview-video {
+
+  background: var(--us-canvas);
+
+}
+
+[data-userscript-root] .us-asset-preview-placeholder {
+
+  display: grid;
+  place-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  color: var(--us-fg-muted);
+
+}
+
+[data-userscript-root] .us-asset-preview-placeholder svg {
+
+  width: 26px;
+  height: 26px;
+
+}
+
+[data-userscript-root] .us-asset-type-icon {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid
+    var(--us-border-strong);
+  background: color-mix(
+      in srgb,
+      var(--us-canvas) 86%,
+      transparent
+    );
+  color: var(--us-fg);
+
+}
+
+[data-userscript-root] .us-asset-type-icon svg {
+  width: 15px;
+  height: 15px;
+
+}
+
+[data-userscript-root] .us-asset-select-wrap {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid
+    var(--us-border-strong);
+  background: color-mix(
+      in srgb,
+      var(--us-canvas) 90%,
+      transparent
+    );
+  cursor: pointer;
+
+}
+
+[data-userscript-root] .us-asset-select {
+  width: 17.5px;
+  height: 17.5px;
+  margin: 0;
+  accent-color: var(--us-accent);
+
+}
+
+[data-userscript-root] .us-asset-item-body {
+
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  min-width: 0;
+  padding:
+    6px
+    7px;
+
+  border-top:
+    1px solid
+    var(--us-border);
+
+}
+
+[data-userscript-root] .us-asset-item-name {
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  color: var(--us-fg);
+
+  font-size: var(--us-font-size-xs);
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}
+
+[data-userscript-root] .us-asset-item .us-meta-line {
+
+  margin-top: 0;
+
+  font-size: 9px;
+
+}
+
+[data-userscript-root] .us-asset-item-actions {
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+
+  padding:
+    0
+    6px
+    6px;
+
+}
+
+[data-userscript-root] .us-asset-empty {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--us-space-2);
+
+  min-height: 96px;
+  padding: var(--us-space-4);
+
+  color: var(--us-fg-muted);
+
+  font-size: var(--us-font-size-sm);
+
+}
+
+[data-userscript-root] .us-asset-empty svg {
+
+  width: 18px;
+  height: 18px;
+
+}
+
+@media (max-width: 360px) {
+
+  [data-userscript-root] .us-asset-grid {
+
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+  }
+
+}
+
+/*
+ * Invisible pointer corridor bridging the intentional visual gap between the
+ * hovered target and the detached tray. Moving into the tray therefore does not
+ * cross a dead zone that can dismiss it.
+ */
+
+[data-userscript-root] .us-asset-hover::before {
+  content: '';
+  position: absolute;
+  pointer-events: auto;
+  background: transparent;
+}
+
+[data-userscript-root] .us-asset-hover[data-placement="bottom"]::before {
+  right: 0;
+  bottom: 100%;
+  left: 0;
+  height: var(--us-hover-bridge, 13px);
+}
+
+[data-userscript-root] .us-asset-hover[data-placement="top"]::before {
+  top: 100%;
+  right: 0;
+  left: 0;
+  height: var(--us-hover-bridge, 13px);
+}
+
+[data-userscript-root] .us-asset-hover[data-placement="right"]::before {
+  top: 0;
+  right: 100%;
+  bottom: 0;
+  width: var(--us-hover-bridge, 13px);
+}
+
+[data-userscript-root] .us-asset-hover[data-placement="left"]::before {
+  top: 0;
+  bottom: 0;
+  left: 100%;
+  width: var(--us-hover-bridge, 13px);
+}
+
+/* Keep the hover corridor outside the tray's scrollable viewport. */
+
+
+[data-userscript-root] .us-asset-hover > .us-asset-tray {
+  max-height: inherit;
+  overflow: auto;
+  scrollbar-gutter: stable;
+}
+
+
+/* File and asset utilities adapt to their own containers, not only the viewport. */
+[data-userscript-root] .us-file-picker,
+[data-userscript-root] .us-asset-tray {
+  container-type: inline-size;
+}
+
+@container (max-width: 420px) {
+  [data-userscript-root] .us-file-picker-drop {
+    grid-template-columns: var(--us-file-icon-size) minmax(0, 1fr);
+  }
+
+  [data-userscript-root] .us-file-picker-drop > .us-button {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+}
+
+@container (max-width: 330px) {
+  [data-userscript-root] .us-asset-tray-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  [data-userscript-root] .us-asset-tray-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}

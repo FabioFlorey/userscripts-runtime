@@ -1,0 +1,440 @@
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ SITE-FAITHFUL COMPONENT CONTRACT                                             │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+/*
+ * The runtime intentionally follows the structural visual system used by
+ * fabioflorey.com: flat geometry, Pixelify titles/chrome, narrow navigation,
+ * hard borders and offset interaction feedback. Body copy uses a more accessible
+ * hyperlegible sans-serif stack.
+ */
+
+[data-userscript-root],
+[data-userscript-root] * {
+
+  box-sizing: border-box;
+
+}
+
+
+
+[data-userscript-root] a {
+
+  color: inherit;
+
+  text-decoration-color: var(--us-fg-muted);
+  text-underline-offset: 0.25em;
+
+}
+
+[data-userscript-root] a:hover {
+
+  color: var(--us-accent);
+
+  text-decoration-color: currentColor;
+
+}
+
+
+/*
+ * Typography hierarchy
+ */
+
+
+
+[data-userscript-root] .us-panel-title,
+[data-userscript-root] .us-drawer-title,
+[data-userscript-root] .us-modal-title,
+[data-userscript-root] .us-popover-title {
+
+  font-family: var(--us-font-meta);
+  font-weight: 600;
+  letter-spacing: 0;
+
+}
+
+[data-userscript-root] .us-page-kicker,
+[data-userscript-root] .us-panel-subtitle,
+[data-userscript-root] .us-setting-description,
+[data-userscript-root] .us-field-label,
+[data-userscript-root] .us-field-hint,
+[data-userscript-root] .us-metric-label,
+[data-userscript-root] .us-kv-label,
+[data-userscript-root] .us-tab,
+[data-userscript-root] .us-badge,
+[data-userscript-root] .us-pill,
+[data-userscript-root] .us-status,
+[data-userscript-root] .us-utility-label,
+[data-userscript-root] .us-tool-section-heading,
+[data-userscript-root] .us-action-catalog-title {
+
+  font-family: var(--us-font-meta);
+
+}
+
+
+/*
+ * Page and section spacing
+ */
+
+
+
+
+
+
+
+
+/*
+ * Panels
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * Toolbars and compact chrome
+ */
+
+
+
+
+
+/*
+ * Buttons
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * Fields
+ */
+
+
+
+
+
+
+
+[data-userscript-root] .us-input:hover,
+[data-userscript-root] .us-select:hover,
+[data-userscript-root] .us-textarea:hover {
+
+  border-color: var(--us-border-strong);
+
+}
+
+[data-userscript-root] .us-input:focus,
+[data-userscript-root] .us-select:focus,
+[data-userscript-root] .us-textarea:focus {
+
+  border-color: var(--us-accent);
+
+  box-shadow: none;
+
+}
+
+[data-userscript-root] .us-input-xs,
+[data-userscript-root] .us-select-xs {  min-height: var(--us-input-height-xs);
+  padding: 5px 9px;
+
+}
+
+
+
+
+
+
+
+
+/*
+ * Semantic feedback
+ */
+
+
+
+
+
+
+
+
+
+
+/*
+ * Settings
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * Navigation
+ */
+
+
+
+
+
+
+
+
+
+
+
+[data-userscript-root] .us-tool-nav-item-active .us-tool-nav-index,
+[data-userscript-root] .us-tool-nav-item:hover .us-tool-nav-index {
+
+  color: var(--us-accent);
+
+}
+
+
+
+
+/*
+ * Data display
+ */
+
+[data-userscript-root] .us-metric-strip,
+[data-userscript-root] .us-kv-list,
+[data-userscript-root] .us-data-table-wrap,
+[data-userscript-root] .us-command,
+[data-userscript-root] .us-code-block {
+
+  border-radius: 0;
+
+}
+
+
+
+
+
+[data-userscript-root] .us-data-table th {
+
+  font-family: var(--us-font-meta);
+
+}
+
+
+/*
+ * Detached surfaces
+ */
+
+
+
+
+
+
+
+[data-userscript-root] .us-popover,
+[data-userscript-root] .us-modal,
+[data-userscript-root] .us-toast {
+
+  border-radius: 0;
+
+}
+
+
+
+
+
+
+
+
+
+/*
+ * Floating launchers use the same square language as the rest of the controls.
+ */
+
+
+
+
+
+
+/*
+ * Textured backgrounds can add visual noise, so detached surfaces are plain by
+ * default. Grain remains available as an explicit visual preference.
+ */
+
+[data-userscript-root] .us-panel,
+[data-userscript-root] .us-drawer,
+[data-userscript-root] .us-popover,
+[data-userscript-root] .us-modal,
+[data-userscript-root] .us-utility-bar,
+[data-userscript-root] .us-toolbar {
+
+  background-image: none;
+
+}
+
+[data-userscript-root][data-us-texture="grain"] .us-panel,
+[data-userscript-root][data-us-texture="grain"] .us-drawer,
+[data-userscript-root][data-us-texture="grain"] .us-popover,
+[data-userscript-root][data-us-texture="grain"] .us-modal,
+[data-userscript-root][data-us-texture="grain"] .us-utility-bar,
+[data-userscript-root][data-us-texture="grain"] .us-toolbar {
+
+  background-image:
+    radial-gradient(
+      circle at 25% 25%,
+      color-mix(
+        in srgb,
+        var(--us-fg) 2.5%,
+        transparent
+      )
+      0.45px,
+      transparent 0.65px
+    );
+
+  background-size:
+    6px
+    6px;
+
+}
+
+
+/*
+ * Mobile follows the site's compact behavior rather than expanding spacing.
+ */
+
+@media (max-width: 720px) {
+
+  [data-userscript-root] .us-drawer {
+
+    width: min(220px, calc(100vw - 24px));
+    max-width: calc(100vw - 24px);
+
+  }
+
+  [data-userscript-root] .us-drawer-body {
+
+    padding:
+      var(--us-space-6)
+      var(--us-space-4);
+
+  }
+
+  [data-userscript-root] .us-page-header {
+
+    margin-bottom: var(--us-space-7);
+    padding-bottom: var(--us-space-6);
+
+  }
+
+  [data-userscript-root] .us-panel-body {
+
+    padding: var(--us-space-4);
+
+  }
+
+  [data-userscript-root] .us-tool-nav-label {
+
+    font-size: 12px;
+
+  }
+
+  [data-userscript-root] .us-utility-bar {
+
+    padding:
+      var(--us-space-2)
+      var(--us-space-3);
+
+  }
+
+}
+
+
+/*
+ * Narrow drawer content follows the site drawer's one-column rhythm.
+ */
+
+[data-userscript-root] .us-drawer .us-chrome-strip {
+
+  overflow: hidden;
+
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+
+}
+
+[data-userscript-root] .us-drawer .us-terminal-label {
+
+  max-width: 100%;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+}
+
+[data-userscript-root] .us-drawer .us-kv-list {
+
+  grid-template-columns:
+    minmax(0, 1fr);
+
+  gap:
+    2px
+    0;
+
+}
+
+[data-userscript-root] .us-drawer .us-kv-value {
+
+  margin-bottom: var(--us-space-3);
+
+  text-align: left;
+
+}
+
+[data-userscript-root] .us-drawer .us-metric-strip {
+
+  grid-template-columns:
+    minmax(0, 1fr);
+
+}
+
+
+/*
+ * Match the website theme toggle proportions.
+ */
+
+
+
+
+
+
