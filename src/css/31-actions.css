@@ -178,6 +178,14 @@
 
 }
 
+[data-userscript-root] .us-action-button[aria-pressed="true"] {
+
+  border-color: var(--us-accent-border);
+  background: var(--us-surface-selected);
+  color: var(--us-accent);
+
+}
+
 [data-userscript-root] .us-action-button-danger:hover {
 
   border-color: var(--us-danger-border);
