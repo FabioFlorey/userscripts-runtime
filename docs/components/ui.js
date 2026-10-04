@@ -27,13 +27,14 @@
     'UserscriptUI';
 
   const API_VERSION =
-    '0.2.2';
+    '0.2.3';
 
   const LOW_LEVEL_APIS =
     Object.freeze([
       'appendChildren',
       'element',
       'icon',
+      'iconSlot',
       'focusableElements',
       'focusInitial',
       'trapFocus',
@@ -1078,6 +1079,28 @@
 
   }
 
+  function iconSlot(name, options = {}) {
+
+    return element(
+      'span',
+      {
+        className: [
+          'us-icon-slot',
+          options.className || ''
+        ].filter(Boolean).join(' '),
+        attrs: {
+          'aria-hidden':
+            'true'
+        }
+      },
+      icon(
+        name,
+        options.iconOptions || {}
+      )
+    );
+
+  }
+
 
   const FOCUSABLE_SELECTOR = [
     'a[href]',
@@ -1235,7 +1258,15 @@
           : null
       },
       options.icon
-        ? icon(options.icon)
+        ? iconSlot(
+          options.icon,
+          {
+            className:
+              options.iconClassName,
+            iconOptions:
+              options.iconOptions
+          }
+        )
         : null,
       options.label || null
     );
@@ -7148,7 +7179,7 @@
     const syncPinTrigger = () => {
 
       pinTrigger.replaceChildren(
-        icon(
+        iconSlot(
           pinned
             ? 'UNPIN'
             : 'PIN'
@@ -8367,7 +8398,15 @@
           : null
       },
       options.icon
-        ? icon(options.icon)
+        ? iconSlot(
+          options.icon,
+          {
+            className:
+              options.iconClassName,
+            iconOptions:
+              options.iconOptions
+          }
+        )
         : null,
       options.label || null
     );
@@ -14062,6 +14101,7 @@
 
     element,
     icon,
+    iconSlot,
     focusableElements,
     focusInitial,
     trapFocus,

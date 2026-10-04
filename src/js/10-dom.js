@@ -201,6 +201,28 @@
 
   }
 
+  function iconSlot(name, options = {}) {
+
+    return element(
+      'span',
+      {
+        className: [
+          'us-icon-slot',
+          options.className || ''
+        ].filter(Boolean).join(' '),
+        attrs: {
+          'aria-hidden':
+            'true'
+        }
+      },
+      icon(
+        name,
+        options.iconOptions || {}
+      )
+    );
+
+  }
+
 
   const FOCUSABLE_SELECTOR = [
     'a[href]',

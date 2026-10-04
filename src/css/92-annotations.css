@@ -117,10 +117,14 @@
 
 }
 
-[data-userscript-root] .us-selection-tool > svg {
+[data-userscript-root] .us-selection-tool > .us-icon-slot {
 
   width: 16px;
+  min-width: 16px;
   height: 16px;
+
+  justify-self: center;
+  align-self: center;
 
 }
 

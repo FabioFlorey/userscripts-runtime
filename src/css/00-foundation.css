@@ -458,6 +458,22 @@
 
 }
 
+[data-userscript-root] .us-icon-slot {
+
+  display: inline-grid;
+  place-items: center;
+
+  width: 1em;
+  min-width: 1em;
+  height: 1em;
+
+  flex: 0 0 1em;
+
+  line-height: 0;
+  pointer-events: none;
+
+}
+
 [data-userscript-root] .us-icon {
 
   display: block;
@@ -466,11 +482,30 @@
   min-width: 1em;
   height: 1em;
 
+  margin: 0;
+
   flex: 0 0 1em;
+
+  position: static;
+  inset: auto;
+
+  vertical-align: middle;
 
   fill: none;
   stroke: currentColor;
   stroke-width: 2;
+
+  transform: none;
+
+}
+
+[data-userscript-root] .us-icon-slot > .us-icon {
+
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+
+  flex: none;
 
 }
 

@@ -241,7 +241,15 @@
           : null
       },
       options.icon
-        ? icon(options.icon)
+        ? iconSlot(
+          options.icon,
+          {
+            className:
+              options.iconClassName,
+            iconOptions:
+              options.iconOptions
+          }
+        )
         : null,
       options.label || null
     );

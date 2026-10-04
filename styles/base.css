@@ -458,6 +458,22 @@
 
 }
 
+[data-userscript-root] .us-icon-slot {
+
+  display: inline-grid;
+  place-items: center;
+
+  width: 1em;
+  min-width: 1em;
+  height: 1em;
+
+  flex: 0 0 1em;
+
+  line-height: 0;
+  pointer-events: none;
+
+}
+
 [data-userscript-root] .us-icon {
 
   display: block;
@@ -466,11 +482,30 @@
   min-width: 1em;
   height: 1em;
 
+  margin: 0;
+
   flex: 0 0 1em;
+
+  position: static;
+  inset: auto;
+
+  vertical-align: middle;
 
   fill: none;
   stroke: currentColor;
   stroke-width: 2;
+
+  transform: none;
+
+}
+
+[data-userscript-root] .us-icon-slot > .us-icon {
+
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+
+  flex: none;
 
 }
 
@@ -1822,6 +1857,9 @@
 [data-userscript-root] .us-icon-button-xs,
 [data-userscript-root] .us-action-button {
 
+  display: inline-grid;
+  place-items: center;
+
   width: var(--us-action-size);
   min-width: var(--us-action-size);
   max-width: var(--us-action-size);
@@ -1831,6 +1869,8 @@
   max-height: var(--us-action-size);
 
   padding: 0;
+
+  line-height: 1;
 
   aspect-ratio: 1 / 1;
   border-radius: 0;
@@ -1842,10 +1882,11 @@
 
 }
 
-[data-userscript-root] .us-icon-button-xs svg,
-[data-userscript-root] .us-action-button svg {
+[data-userscript-root] .us-icon-button-xs .us-icon-slot,
+[data-userscript-root] .us-action-button .us-icon-slot {
 
   width: var(--us-action-icon-size);
+  min-width: var(--us-action-icon-size);
   height: var(--us-action-icon-size);
 
   flex:
@@ -7377,7 +7418,7 @@ button.us-pill {
 
 }
 
-[data-userscript-root] .us-floating-window-actions .us-icon {
+[data-userscript-root] .us-floating-window-actions .us-icon-slot {
 
   width: 15px;
   min-width: 15px;
@@ -7703,10 +7744,14 @@ button.us-pill {
 
 }
 
-[data-userscript-root] .us-selection-tool > svg {
+[data-userscript-root] .us-selection-tool > .us-icon-slot {
 
   width: 16px;
+  min-width: 16px;
   height: 16px;
+
+  justify-self: center;
+  align-self: center;
 
 }
 

@@ -17,6 +17,7 @@
 
     element,
     icon,
+    iconSlot,
     focusableElements,
     focusInitial,
     trapFocus,

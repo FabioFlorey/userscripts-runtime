@@ -104,6 +104,9 @@
 [data-userscript-root] .us-icon-button-xs,
 [data-userscript-root] .us-action-button {
 
+  display: inline-grid;
+  place-items: center;
+
   width: var(--us-action-size);
   min-width: var(--us-action-size);
   max-width: var(--us-action-size);
@@ -113,6 +116,8 @@
   max-height: var(--us-action-size);
 
   padding: 0;
+
+  line-height: 1;
 
   aspect-ratio: 1 / 1;
   border-radius: 0;
@@ -124,10 +129,11 @@
 
 }
 
-[data-userscript-root] .us-icon-button-xs svg,
-[data-userscript-root] .us-action-button svg {
+[data-userscript-root] .us-icon-button-xs .us-icon-slot,
+[data-userscript-root] .us-action-button .us-icon-slot {
 
   width: var(--us-action-icon-size);
+  min-width: var(--us-action-icon-size);
   height: var(--us-action-icon-size);
 
   flex:

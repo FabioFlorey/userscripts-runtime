@@ -222,7 +222,7 @@
     const syncPinTrigger = () => {
 
       pinTrigger.replaceChildren(
-        icon(
+        iconSlot(
           pinned
             ? 'UNPIN'
             : 'PIN'

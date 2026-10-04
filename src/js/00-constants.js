@@ -27,13 +27,14 @@
     'UserscriptUI';
 
   const API_VERSION =
-    '0.2.2';
+    '0.2.3';
 
   const LOW_LEVEL_APIS =
     Object.freeze([
       'appendChildren',
       'element',
       'icon',
+      'iconSlot',
       'focusableElements',
       'focusInitial',
       'trapFocus',
