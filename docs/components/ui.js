@@ -27,7 +27,7 @@
     'UserscriptUI';
 
   const API_VERSION =
-    '0.2.4';
+    '0.2.5';
 
   const LOW_LEVEL_APIS =
     Object.freeze([
@@ -430,6 +430,13 @@
         group: 'Links',
         icon: 'LINK',
         label: 'Inspect link'
+      }),
+
+    SCREENSHOT:
+      Object.freeze({
+        group: 'Capture',
+        icon: 'SCREENSHOT',
+        label: 'Screenshot'
       }),
 
     CAPTURE_VIEWPORT:
