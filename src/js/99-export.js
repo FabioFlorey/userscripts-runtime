@@ -70,6 +70,7 @@
     actionStrip,
 
     copyText,
+    createZipBlob,
     shellQuote,
     copyCommandButton,
     commandBlock,

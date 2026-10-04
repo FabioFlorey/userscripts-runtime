@@ -105,6 +105,7 @@ The numbered files under `src/` are concatenated in filename order by `scripts/b
 │       ├── 40-panels.js
 │       ├── 41-data.js
 │       ├── 42-actions.js
+│       ├── 43-archive.js
 │       ├── 50-progress.js
 │       ├── 50-segmented-progress.js
 │       ├── 51-file-picker.js
@@ -133,7 +134,7 @@ The numbered files under `src/` are concatenated in filename order by `scripts/b
         ├── dark.css
         └── light.css
 
-15 directories, 94 files
+15 directories, 95 files
 ```
 <!-- PROJECT_TREE_END -->
 
@@ -144,10 +145,10 @@ The numbered files under `src/` are concatenated in filename order by `scripts/b
 Add the runtime and styles to your userscript header:
 
 ```js
-// @require  https://<username>.github.io/userscripts-runtime/components/ui.js?v=0.2.11
-// @resource UI_BASE  https://<username>.github.io/userscripts-runtime/styles/base.css?v=0.2.11
-// @resource UI_DARK  https://<username>.github.io/userscripts-runtime/styles/themes/dark.css?v=0.2.11
-// @resource UI_LIGHT https://<username>.github.io/userscripts-runtime/styles/themes/light.css?v=0.2.11
+// @require  https://<username>.github.io/userscripts-runtime/components/ui.js?v=0.2.12
+// @resource UI_BASE  https://<username>.github.io/userscripts-runtime/styles/base.css?v=0.2.12
+// @resource UI_DARK  https://<username>.github.io/userscripts-runtime/styles/themes/dark.css?v=0.2.12
+// @resource UI_LIGHT https://<username>.github.io/userscripts-runtime/styles/themes/light.css?v=0.2.12
 //
 // @grant GM_getResourceText
 // @grant GM_addStyle

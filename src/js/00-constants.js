@@ -27,7 +27,7 @@
     'UserscriptUI';
 
   const API_VERSION =
-    '0.2.11';
+    '0.2.12';
 
   const LOW_LEVEL_APIS =
     Object.freeze([
@@ -61,7 +61,8 @@
       'openDraggableWindow',
       'openNotepad',
       'uploadQueue',
-      'sourceInspector'
+      'sourceInspector',
+      'createZipBlob'
     ]);
 
   const DEPRECATED_APIS =
@@ -71,6 +72,9 @@
 
     DOWNLOAD:
       '<path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/>',
+
+    ARCHIVE:
+      '<path d="M3 4h18v4H3z"/><path d="M5 8v12h14V8"/><path d="M10 12h4"/>',
 
     UPLOAD:
       '<path d="M12 21V9"/><path d="m7 14 5-5 5 5"/><path d="M5 3h14"/>',
@@ -283,6 +287,13 @@
         group: 'Basic',
         icon: 'DOWNLOAD',
         label: 'Download'
+      }),
+
+    ARCHIVE:
+      Object.freeze({
+        group: 'Basic',
+        icon: 'ARCHIVE',
+        label: 'Archive'
       }),
 
     UPLOAD:
