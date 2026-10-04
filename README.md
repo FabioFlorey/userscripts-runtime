@@ -145,10 +145,10 @@ The numbered files under `src/` are concatenated in filename order by `scripts/b
 Add the runtime and styles to your userscript header:
 
 ```js
-// @require  https://<username>.github.io/userscripts-runtime/components/ui.js?v=0.2.13
-// @resource UI_BASE  https://<username>.github.io/userscripts-runtime/styles/base.css?v=0.2.13
-// @resource UI_DARK  https://<username>.github.io/userscripts-runtime/styles/themes/dark.css?v=0.2.13
-// @resource UI_LIGHT https://<username>.github.io/userscripts-runtime/styles/themes/light.css?v=0.2.13
+// @require  https://<username>.github.io/userscripts-runtime/components/ui.js?v=0.2.14
+// @resource UI_BASE  https://<username>.github.io/userscripts-runtime/styles/base.css?v=0.2.14
+// @resource UI_DARK  https://<username>.github.io/userscripts-runtime/styles/themes/dark.css?v=0.2.14
+// @resource UI_LIGHT https://<username>.github.io/userscripts-runtime/styles/themes/light.css?v=0.2.14
 //
 // @grant GM_getResourceText
 // @grant GM_addStyle

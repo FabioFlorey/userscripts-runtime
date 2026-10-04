@@ -27,7 +27,7 @@
     'UserscriptUI';
 
   const API_VERSION =
-    '0.2.13';
+    '0.2.14';
 
   const LOW_LEVEL_APIS =
     Object.freeze([
@@ -3506,6 +3506,215 @@
     );
 
     textarea.remove();
+
+  }
+
+  async function imageBlobAsPng(source, options = {}) {
+
+    let blob =
+      await source;
+
+    if (typeof blob === 'string') {
+
+      const response =
+        await fetch(
+          blob,
+          options.fetchOptions
+        );
+
+      if (!response.ok) {
+        throw new Error(
+          `Image fetch failed with HTTP ${response.status}.`
+        );
+      }
+
+      blob =
+        await response.blob();
+
+    }
+    else if (blob instanceof Response) {
+
+      if (!blob.ok) {
+        throw new Error(
+          `Image response failed with HTTP ${blob.status}.`
+        );
+      }
+
+      blob =
+        await blob.blob();
+
+    }
+
+    if (!(blob instanceof Blob)) {
+      throw new TypeError(
+        'copyImage() requires an image URL, Response, Blob, or Promise resolving to one.'
+      );
+    }
+
+    if (blob.type === 'image/png') {
+      return blob;
+    }
+
+    const canvas =
+      document.createElement(
+        'canvas'
+      );
+
+    if (
+      typeof createImageBitmap ===
+      'function'
+    ) {
+
+      const bitmap =
+        await createImageBitmap(blob);
+
+      try {
+
+        canvas.width =
+          bitmap.width;
+
+        canvas.height =
+          bitmap.height;
+
+        const context =
+          canvas.getContext('2d');
+
+        if (!context) {
+          throw new Error(
+            'Canvas 2D context is unavailable.'
+          );
+        }
+
+        context.drawImage(
+          bitmap,
+          0,
+          0
+        );
+
+      }
+      finally {
+        bitmap.close?.();
+      }
+
+    }
+    else {
+
+      const objectUrl =
+        URL.createObjectURL(blob);
+
+      try {
+
+        const image =
+          await new Promise(
+            (resolve, reject) => {
+
+              const node =
+                new Image();
+
+              node.onload =
+                () => resolve(node);
+
+              node.onerror =
+                reject;
+
+              node.src =
+                objectUrl;
+
+            }
+          );
+
+        canvas.width =
+          image.naturalWidth;
+
+        canvas.height =
+          image.naturalHeight;
+
+        const context =
+          canvas.getContext('2d');
+
+        if (!context) {
+          throw new Error(
+            'Canvas 2D context is unavailable.'
+          );
+        }
+
+        context.drawImage(
+          image,
+          0,
+          0
+        );
+
+      }
+      finally {
+        URL.revokeObjectURL(
+          objectUrl
+        );
+      }
+
+    }
+
+    return new Promise(
+      (resolve, reject) => {
+
+        canvas.toBlob(
+          (result) => {
+
+            if (result) {
+              resolve(result);
+              return;
+            }
+
+            reject(
+              new Error(
+                'PNG conversion failed.'
+              )
+            );
+
+          },
+          'image/png'
+        );
+
+      }
+    );
+
+  }
+
+  async function copyImage(source, options = {}) {
+
+    if (
+      !navigator.clipboard?.write ||
+      typeof ClipboardItem ===
+        'undefined'
+    ) {
+      throw new Error(
+        'Image clipboard API is unavailable.'
+      );
+    }
+
+    /*
+     * ClipboardItem deliberately receives the unresolved Promise.
+     * navigator.clipboard.write() is therefore invoked synchronously
+     * during the originating click/keyboard gesture, while image fetch
+     * and PNG conversion continue asynchronously. This preserves the
+     * browser's transient user activation for remote images.
+     */
+    const pngPromise =
+      imageBlobAsPng(
+        source,
+        options
+      );
+
+    const item =
+      new ClipboardItem({
+        'image/png':
+          pngPromise
+      });
+
+    await navigator.clipboard.write([
+      item
+    ]);
+
+    return true;
 
   }
 
@@ -15128,6 +15337,7 @@
     actionStrip,
 
     copyText,
+    copyImage,
     createZipBlob,
     createZipWriter,
     shellQuote,

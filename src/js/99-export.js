@@ -70,6 +70,7 @@
     actionStrip,
 
     copyText,
+    copyImage,
     createZipBlob,
     createZipWriter,
     shellQuote,
