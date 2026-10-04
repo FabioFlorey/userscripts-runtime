@@ -27,7 +27,7 @@
     'UserscriptUI';
 
   const API_VERSION =
-    '0.2.6';
+    '0.2.7';
 
   const LOW_LEVEL_APIS =
     Object.freeze([
