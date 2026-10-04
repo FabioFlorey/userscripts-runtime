@@ -179,6 +179,9 @@
     PAUSE:
       '<path d="M9 5v14"/><path d="M15 5v14"/>',
 
+    STOP:
+      '<rect x="6" y="6" width="12" height="12"/>',
+
     VOLUME:
       '<path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15 9a4 4 0 0 1 0 6"/><path d="M17.5 6.5a8 8 0 0 1 0 11"/>',
 
@@ -460,7 +463,7 @@
     OPEN_IMAGE:
       Object.freeze({
         group: 'Images',
-        icon: 'EXTERNAL',
+        icon: 'IMAGE',
         label: 'Open image'
       }),
 
@@ -644,6 +647,13 @@
         group: 'Media',
         icon: 'PAUSE',
         label: 'Pause'
+      }),
+
+    STOP:
+      Object.freeze({
+        group: 'Media',
+        icon: 'STOP',
+        label: 'Stop'
       }),
 
     VOLUME:
