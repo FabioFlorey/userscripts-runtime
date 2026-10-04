@@ -49,8 +49,13 @@
 
     if (navigator.clipboard?.writeText) {
 
-      await navigator.clipboard.writeText(value);
-      return;
+      try {
+        await navigator.clipboard.writeText(value);
+        return;
+      } catch {
+        // Clipboard permission can be denied even on secure pages.
+        // Fall back to the DOM copy path instead of failing the action.
+      }
 
     }
 

@@ -27,7 +27,7 @@
     'UserscriptUI';
 
   const API_VERSION =
-    '0.2.10';
+    '0.2.11';
 
   const LOW_LEVEL_APIS =
     Object.freeze([
@@ -3466,8 +3466,13 @@
 
     if (navigator.clipboard?.writeText) {
 
-      await navigator.clipboard.writeText(value);
-      return;
+      try {
+        await navigator.clipboard.writeText(value);
+        return;
+      } catch {
+        // Clipboard permission can be denied even on secure pages.
+        // Fall back to the DOM copy path instead of failing the action.
+      }
 
     }
 
