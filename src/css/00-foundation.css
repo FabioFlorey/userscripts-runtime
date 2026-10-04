@@ -488,6 +488,7 @@
 
   position: static;
   inset: auto;
+  z-index: auto;
 
   vertical-align: middle;
 
