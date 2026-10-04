@@ -27,7 +27,7 @@
     'UserscriptUI';
 
   const API_VERSION =
-    '0.2.14';
+    '0.2.15';
 
   const LOW_LEVEL_APIS =
     Object.freeze([
@@ -118,6 +118,9 @@
 
     IMAGE:
       '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8" cy="9" r="1.5"/><path d="m4 17 5-5 4 4 2-2 5 5"/>',
+
+    GRID:
+      '<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>',
 
     MOVE:
       '<path d="M12 2v20"/><path d="m8 6 4-4 4 4"/><path d="m8 18 4 4 4-4"/><path d="M2 12h20"/><path d="m6 8-4 4 4 4"/><path d="m18 8 4 4-4 4"/>',
@@ -722,6 +725,13 @@
         group: 'Media',
         icon: 'COPY',
         label: 'Copy media URL'
+      }),
+
+    CONTACT_SHEET:
+      Object.freeze({
+        group: 'Media',
+        icon: 'GRID',
+        label: 'Contact sheet'
       }),
 
     REQUESTS:
