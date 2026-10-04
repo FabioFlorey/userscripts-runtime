@@ -7458,8 +7458,16 @@ button.us-pill {
 
 }
 
+[data-userscript-root] .us-floating-window-header-content {
+
+  grid-column: 3;
+  min-width: 0;
+
+}
+
 [data-userscript-root] .us-floating-window-actions {
 
+  grid-column: 4;
   display: flex;
   align-items: center;
   gap: 2px;

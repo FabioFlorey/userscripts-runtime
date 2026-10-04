@@ -100,7 +100,16 @@
               ''
           }
         ),
-        options.headerContent || null,
+        options.headerContent
+          ? element(
+            'div',
+            {
+              className:
+                'us-floating-window-header-content'
+            },
+            options.headerContent
+          )
+          : null,
         element(
           'div',
           {
