@@ -71,6 +71,7 @@
 
     copyText,
     createZipBlob,
+    createZipWriter,
     shellQuote,
     copyCommandButton,
     commandBlock,

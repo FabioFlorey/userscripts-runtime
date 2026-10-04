@@ -27,7 +27,7 @@
     'UserscriptUI';
 
   const API_VERSION =
-    '0.2.12';
+    '0.2.13';
 
   const LOW_LEVEL_APIS =
     Object.freeze([
@@ -62,7 +62,8 @@
       'openNotepad',
       'uploadQueue',
       'sourceInspector',
-      'createZipBlob'
+      'createZipBlob',
+      'createZipWriter'
     ]);
 
   const DEPRECATED_APIS =
