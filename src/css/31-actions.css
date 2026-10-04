@@ -164,7 +164,8 @@
 
 [data-userscript-root] .us-action-button {
 
-  color: var(--us-fg-muted);
+  /* Action glyphs must remain legible at rest; hover is emphasis, not reveal. */
+  color: var(--us-fg);
 
 }
 
