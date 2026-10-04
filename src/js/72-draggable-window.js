@@ -100,6 +100,7 @@
               ''
           }
         ),
+        options.headerContent || null,
         element(
           'div',
           {

@@ -179,6 +179,9 @@
         title:
           options.title ||
           'Notepad',
+        headerContent:
+          options.headerContent ||
+          null,
         width:
           options.width ||
           460,
