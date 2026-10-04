@@ -488,6 +488,9 @@
 [data-userscript-root] .us-settings-group {
   display: flex;
   flex-direction: column;
+
+  flex: 0 0 auto;
+
   border: 1px solid var(--us-border);
   border-radius: 0;
   overflow: hidden;
@@ -511,6 +514,8 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr)
     minmax(120px, auto);
+
+  flex: 0 0 auto;
   gap: var(--us-space-4);
   align-items: center;
   min-height: 48px;
