@@ -5553,6 +5553,63 @@ button.us-pill {
 }
 /*
 ┌──────────────────────────────────────────────────────────────────────────────┐
+│ VIEWPORT NAVIGATOR                                                           │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
+[data-userscript-root] .us-viewport-navigator {
+  position: relative;
+  width: 132px;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 1px solid var(--us-border-strong);
+  background: var(--us-surface-2);
+  box-shadow: var(--us-shadow-popover);
+  cursor: crosshair;
+  touch-action: none;
+  user-select: none;
+}
+
+[data-userscript-root] .us-viewport-navigator[hidden] {
+  display: none !important;
+}
+
+[data-userscript-root] .us-viewport-navigator-preview {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+
+[data-userscript-root] .us-viewport-navigator-window {
+  position: absolute;
+  min-width: 8px;
+  min-height: 8px;
+  border: 2px solid var(--us-accent);
+  background: color-mix(in srgb, var(--us-accent) 14%, transparent);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.65);
+  cursor: grab;
+  touch-action: none;
+}
+
+[data-userscript-root] .us-viewport-navigator:active .us-viewport-navigator-window {
+  cursor: grabbing;
+}
+
+[data-userscript-root] .us-viewport-navigator:focus-visible {
+  outline: 2px solid var(--us-accent);
+  outline-offset: 2px;
+}
+
+@media (max-width: 520px) {
+  [data-userscript-root] .us-viewport-navigator {
+    width: 104px;
+  }
+}
+/*
+┌──────────────────────────────────────────────────────────────────────────────┐
 │ GENERIC PROGRESS                                                             │
 └──────────────────────────────────────────────────────────────────────────────┘
 */

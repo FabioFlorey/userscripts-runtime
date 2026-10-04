@@ -33,6 +33,13 @@ The numbered files under `src/` are concatenated in filename order by `scripts/b
 │   ├── components
 │   │   └── ui.js
 │   ├── dark.html
+│   ├── fonts
+│   │   ├── atkinson-hyperlegible-400.ttf
+│   │   ├── atkinson-hyperlegible-700.ttf
+│   │   ├── pixelify-sans-400.ttf
+│   │   ├── pixelify-sans-500.ttf
+│   │   ├── pixelify-sans-600.ttf
+│   │   └── pixelify-sans-700.ttf
 │   ├── gallery.css
 │   ├── gallery.js
 │   ├── index.html
@@ -43,6 +50,13 @@ The numbered files under `src/` are concatenated in filename order by `scripts/b
 │       └── themes
 │           ├── dark.css
 │           └── light.css
+├── fonts
+│   ├── atkinson-hyperlegible-400.ttf
+│   ├── atkinson-hyperlegible-700.ttf
+│   ├── pixelify-sans-400.ttf
+│   ├── pixelify-sans-500.ttf
+│   ├── pixelify-sans-600.ttf
+│   └── pixelify-sans-700.ttf
 ├── scripts
 │   └── build.sh
 ├── src
@@ -60,6 +74,7 @@ The numbered files under `src/` are concatenated in filename order by `scripts/b
 │   │   ├── 60-responsive.css
 │   │   ├── 70-visual-contract.css
 │   │   ├── 75-media-composition.css
+│   │   ├── 76-viewport-navigator.css
 │   │   ├── 80-progress-loading.css
 │   │   ├── 81-file-picker.css
 │   │   ├── 82-asset-tray.css
@@ -74,6 +89,7 @@ The numbered files under `src/` are concatenated in filename order by `scripts/b
 │   │   ├── 13-utility-bar.js
 │   │   ├── 14-visual-primitives.js
 │   │   ├── 20-files-assets-progress.js
+│   │   ├── 21-viewport-navigator.js
 │   │   ├── 30-inline.js
 │   │   ├── 31-hover.js
 │   │   ├── 32-popovers.js
@@ -97,6 +113,7 @@ The numbered files under `src/` are concatenated in filename order by `scripts/b
 │       ├── 53-asset-carousel.js
 │       ├── 53-asset-hover.js
 │       ├── 54-media.js
+│       ├── 55-viewport-navigator.js
 │       ├── 60-overlays.js
 │       ├── 70-annotation-core.js
 │       ├── 70-selection-toolbar.js
@@ -116,7 +133,7 @@ The numbered files under `src/` are concatenated in filename order by `scripts/b
         ├── dark.css
         └── light.css
 
-13 directories, 79 files
+15 directories, 94 files
 ```
 <!-- PROJECT_TREE_END -->
 
@@ -127,10 +144,10 @@ The numbered files under `src/` are concatenated in filename order by `scripts/b
 Add the runtime and styles to your userscript header:
 
 ```js
-// @require  https://<username>.github.io/userscripts-runtime/components/ui.js?v=0.2.4
-// @resource UI_BASE  https://<username>.github.io/userscripts-runtime/styles/base.css?v=0.2.4
-// @resource UI_DARK  https://<username>.github.io/userscripts-runtime/styles/themes/dark.css?v=0.2.4
-// @resource UI_LIGHT https://<username>.github.io/userscripts-runtime/styles/themes/light.css?v=0.2.4
+// @require  https://<username>.github.io/userscripts-runtime/components/ui.js?v=0.2.6
+// @resource UI_BASE  https://<username>.github.io/userscripts-runtime/styles/base.css?v=0.2.6
+// @resource UI_DARK  https://<username>.github.io/userscripts-runtime/styles/themes/dark.css?v=0.2.6
+// @resource UI_LIGHT https://<username>.github.io/userscripts-runtime/styles/themes/light.css?v=0.2.6
 //
 // @grant GM_getResourceText
 // @grant GM_addStyle

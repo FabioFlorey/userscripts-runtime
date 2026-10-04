@@ -28,6 +28,7 @@ mkdir -p \
   "$ROOT/components" \
   "$ROOT/styles" \
   "$DOCS/components" \
+  "$DOCS/fonts" \
   "$DOCS/styles/themes"
 
 cat "$ROOT"/src/js/*.js > "$ROOT/components/ui.js"
@@ -36,6 +37,7 @@ cat "$ROOT"/src/docs-gallery/*.js > "$DOCS/gallery.js"
 
 cp "$ROOT/components/ui.js" "$DOCS/components/ui.js"
 cp "$ROOT/styles/base.css" "$DOCS/styles/base.css"
+cp "$ROOT"/fonts/* "$DOCS/fonts/"
 cp "$ROOT/styles/fonts.css" "$DOCS/styles/fonts.css"
 cp "$ROOT/styles/themes/dark.css" "$DOCS/styles/themes/dark.css"
 cp "$ROOT/styles/themes/light.css" "$DOCS/styles/themes/light.css"

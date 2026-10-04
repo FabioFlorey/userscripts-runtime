@@ -104,6 +104,7 @@
     mediaSource,
     mediaControls,
     sourceInspector,
+    viewportNavigator,
 
     createRoot,
     setTheme,

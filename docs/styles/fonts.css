@@ -1,4 +1,52 @@
-/* Optional web fonts for the userscript runtime.
- * base.css does not depend on this file; system fallbacks remain usable.
+/* Local web fonts used by the userscript runtime Gallery and UI.
+ * Font files are vendored under /fonts so runtime consumers do not depend on
+ * Google Fonts at page load.
  */
-@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Pixelify+Sans:wght@400;500;600;700&family=Press+Start+2P&display=swap");
+
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/atkinson-hyperlegible-400.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/atkinson-hyperlegible-700.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Pixelify Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/pixelify-sans-400.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Pixelify Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/pixelify-sans-500.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Pixelify Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/pixelify-sans-600.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Pixelify Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/pixelify-sans-700.ttf") format("truetype");
+}
